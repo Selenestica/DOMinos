@@ -22,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useUn
 //post.save().then(doc => console.log(doc))
 //.catch(error => console.log(error))
 
+//updates
 app.put('/posts', (req, res) => {
     const postId = req.body.postId
     const title = req.body.title
