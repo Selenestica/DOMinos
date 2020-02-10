@@ -6,9 +6,9 @@ const util = require('util')
 
 dotenv.config()
 
-// ************************************************ API FUNCTIONS ************************************************ //
+// ************************************************ PREP WORK FUNCTIONS AND EXAMPLES ************************************************ //
 
-//finding nearby stores
+//finds nearby stores... important for finding the id of the store nearest you
 pizzaapi.Util.findNearbyStores(
     '13414 Tall Forest Dr, Cypress, TX, 77429',
     'Delivery',
@@ -17,24 +17,44 @@ pizzaapi.Util.findNearbyStores(
     }
 )
 
-//getting store info
+//stores your store id in a variable
 let myStore = new pizzaapi.Store({ID: '6651'})
 myStore.ID = '6651'
 
 myStore.getInfo(
     function(storeData) {
-        //console.log("******************************** STORE DATA ***************************************")
+        //console.log("//////////// STORE DATA ////////////")
         //console.log(storeData)
         
     }
 )
 
+//gets menu item ids so you know what to order
 myStore.getFriendlyNames(
     function(storeData) {
-        //console.log("*********************************** MENU ITEMS ************************************")
+        //console.log("//////////// MENU ITEMS ////////////")
         //console.log(storeData)
     }
 )
+
+//customer example
+let customer = new Customer({
+    firstName: 'Joseph',
+    lastName: 'Wilson',
+    address: {
+        Street: '13414 Tall Forest Dr',
+        City: 'Cypress',
+        Region: 'TX',
+        PostalCode: '77429'
+    },
+    email: 'josiahleemusic@gmail.com', 
+    phone: '5397776132'
+})
+
+//item example
+let item = new Item({
+    code: '14SCREEN'
+})
 
 // ************************************************ CREATING AN ORDER ************************************************ //
 let customerJBWilson = new pizzaapi.Customer({
@@ -67,6 +87,7 @@ order.addItem(
 
 order.StoreOrderID = order.StoreID
 
+//checks to see if the order will go through
 order.validate(
     function(result) {
         console.log("*********************************** Order Validated ************************************************************************************************************")
@@ -74,6 +95,7 @@ order.validate(
     }
 )
 
+//see the price of the order without placing it
 order.price(
     function(result) {
         console.log("*********************************** Price ************************************")
@@ -81,6 +103,7 @@ order.price(
     }
 )
 
+//pass in cc info
 let cardNumber = process.env.CC_NUMBER
 let cardInfo = new order.PaymentObject()
     cardInfo.Amount = order.Amounts.Customer
@@ -90,14 +113,14 @@ let cardInfo = new order.PaymentObject()
     cardInfo.SecurityCode = process.env.CC_SECCODE
     cardInfo.PostalCode = process.env.CC_ZIP
 
-//console.log(process.env.CC_NUMBER)
-
 order.Payments.push(cardInfo)
 
+/*
+//places the order
 order.place(
     function(result) {
         console.log("*********************************** Order Placed! ************************************")
         console.log(util.inspect(result, false, null, true))
     }
 )
-
+*/
