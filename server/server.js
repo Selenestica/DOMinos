@@ -1,10 +1,48 @@
 
 // Dependencies
+const express = require('express')
 const pizzaapi = require('dominos')
 const dotenv = require('dotenv')
 const util = require('util')
+const mongoose = require('mongoose')
+const app = express()
+const Post = require('./models/post')
 
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+mongoose.set('useFindAndModify', false);
 dotenv.config()
+
+//connect to the database
+//if database exists, it will connect to it. otherwise,
+//it will create the database.
+mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useUnifiedTopology: true})
+
+//const post = new Post({title: "hi", author: 'jb'})
+//post.save().then(doc => console.log(doc))
+//.catch(error => console.log(error))
+
+app.put('/posts', (req, res) => {
+    const postId = req.body.postId
+    const title = req.body.title
+    const author = req.body.author
+
+    Post.findByIdAndUpdate(postId, {
+        title: title,
+        author: author
+    }).then(doc => res.json({message: 'updated'}))
+    .catch(error => res.json({message: 'error!'}))
+})
+
+app.get('/posts', (req, res) => {
+    //find({}) gives us everything without filter
+    Post.find({}).then(posts => res.json(posts))
+})
+
+app.post('./posts:postId', (req, res) => {
+    const postId = req.params.postId
+    Post.findById(postId).then(doc => res.json(doc))
+})
 
 // ************************************************ PREP WORK FUNCTIONS AND EXAMPLES ************************************************ //
 
@@ -37,6 +75,7 @@ myStore.getFriendlyNames(
     }
 )
 
+/*
 //customer example
 let customer = new Customer({
     firstName: 'Joseph',
@@ -55,6 +94,7 @@ let customer = new Customer({
 let item = new Item({
     code: '14SCREEN'
 })
+*/
 
 // ************************************************ CREATING AN ORDER ************************************************ //
 let customerJBWilson = new pizzaapi.Customer({
@@ -91,7 +131,7 @@ order.StoreOrderID = order.StoreID
 order.validate(
     function(result) {
         console.log("*********************************** Order Validated ************************************************************************************************************")
-        console.log(util.inspect(result, false, null, true))
+    //    console.log(util.inspect(result, false, null, true))
     }
 )
 
@@ -99,7 +139,7 @@ order.validate(
 order.price(
     function(result) {
         console.log("*********************************** Price ************************************")
-        console.log(util.inspect(result, false, null, true))
+    //    console.log(util.inspect(result, false, null, true))
     }
 )
 
@@ -124,3 +164,7 @@ order.place(
     }
 )
 */
+
+app.listen(1200, () => {
+    console.log('DOMinos running...')
+})
