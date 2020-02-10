@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dominos": "^2.1.1"
+    "dominos": "^2.1.1",
+    "dotenv": "^8.2.0",
+    "util": "^0.12.1"
   }
 }
