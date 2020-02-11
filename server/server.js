@@ -1,27 +1,61 @@
-
 // Dependencies
 const express = require('express')
 const pizzaapi = require('dominos')
 const dotenv = require('dotenv')
 const util = require('util')
 const mongoose = require('mongoose')
+const cors = require('cors')
+const PORT = 1200
+const User = require('./models/user')
 const app = express()
-const Post = require('./models/post')
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 mongoose.set('useFindAndModify', false);
 dotenv.config()
 
-//connect to the database
-//if database exists, it will connect to it. otherwise,
-//it will create the database.
-mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useUnifiedTopology: true})
+//connecting to mongodb
+mongoose.connect('mongodb://localhost:27017/users', {useNewUrlParser: true, useUnifiedTopology: true})
 
-//const post = new Post({title: "hi", author: 'jb'})
-//post.save().then(doc => console.log(doc))
-//.catch(error => console.log(error))
+//registers a user
+app.post('/register-user', (req, res) => {
+    const user = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        address: {
+            Street: req.body.street,
+            City: req.body.city,
+            Region: req.body.state,
+            PostalCode: req.body.zip
+        },
+        email: req.body.email, 
+        phone: req.body.phone,
+        pastOrders: {
+            item: {
+                code: req.body.item_code,
+                options: req.body.item_options,
+                quantity: req.body.item_quantity
+            },
+            date_ordered: req.body.date_ordered,
+            delivery_address: {
+                Street: req.body.street,
+                City: req.body.city,
+                Region: req.body.state,
+                PostalCode: req.body.zip
+            }
+        }
+    })
+    user.save().then(() => res.send('User registered!'))
+    .catch(error => console.log(error))
+})
 
+//view all registered users
+app.get('/view-registered-users', (req, res) => {
+    User.find({}).then(users => res.json(users))
+})
+
+/*
 //updates
 app.put('/posts', (req, res) => {
     const postId = req.body.postId
@@ -34,16 +68,7 @@ app.put('/posts', (req, res) => {
     }).then(doc => res.json({message: 'updated'}))
     .catch(error => res.json({message: 'error!'}))
 })
-
-app.get('/posts', (req, res) => {
-    //find({}) gives us everything without filter
-    Post.find({}).then(posts => res.json(posts))
-})
-
-app.post('./posts:postId', (req, res) => {
-    const postId = req.params.postId
-    Post.findById(postId).then(doc => res.json(doc))
-})
+*/
 
 // ************************************************ PREP WORK FUNCTIONS AND EXAMPLES ************************************************ //
 
@@ -166,6 +191,6 @@ order.place(
 )
 */
 
-app.listen(1200, () => {
-    console.log('DOMinos running...')
+app.listen(PORT, () => {
+    console.log('DOMinos is now running on port ' + PORT)
 })
