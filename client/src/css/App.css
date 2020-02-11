@@ -1,0 +1,27 @@
+.app-container {
+    text-align: center;
+}
+
+.buttons-row {
+    justify-content: center;
+}
+
+#delivery-button-div {
+    padding: 2rem;
+}
+
+#carryout-button-div {
+    padding: 2rem;
+}
+
+.delivery-icon {
+    font-size: 10rem;
+}
+
+.carryout-icon {
+    font-size: 10rem;
+}
+
+.button-h1s {
+    margin-top: 0rem;
+}

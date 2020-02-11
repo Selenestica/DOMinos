@@ -3,7 +3,6 @@ const router = express.Router()
 const User = require('../models/user')
 router.use(express.urlencoded({extended: false}))
 
-
 //registers a user
 router.post('/register-user', async (req, res) => {
 
