@@ -11,6 +11,7 @@ let userSchema = new mongoose.Schema({
     },
     email: String,
     phone: String,
+    password: String,
     pastOrders: {
         item: {
             code: String,
