@@ -24,7 +24,23 @@ dotenv.config()
 mongoose.connect('mongodb://localhost:27017/users', {useNewUrlParser: true, useUnifiedTopology: true})
 
 
+//stores your store id in a variable
+let myStore = new pizzaapi.Store({ID: '6651'})
+myStore.ID = '6651'
 
+myStore.getMenu(
+    function(storeData) {
+        //console.log(storeData)
+    }
+)
+
+//gets menu item ids so you know what to order
+myStore.getFriendlyNames(
+    function(storeData) {
+        //console.log("//////////// MENU ITEMS ////////////")
+        //console.log(storeData)
+    }
+)
 
 
 

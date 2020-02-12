@@ -10,8 +10,24 @@
     padding: 2rem;
 }
 
+#delivery-button-div:hover {
+    color: burlywood;
+}
+
 #carryout-button-div {
     padding: 2rem;
+}
+
+#carryout-button-div:hover {
+    color: burlywood;
+}
+
+.button-as {
+    color: inherit;
+}
+
+.button-as:hover {
+    text-decoration: none;
 }
 
 .delivery-icon {
