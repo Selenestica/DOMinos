@@ -2,6 +2,12 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 router.use(express.urlencoded({extended: false}))
+const cors = require('cors')
+global.bcrypt = require('bcrypt')
+global.SALT_ROUNDS = 10
+router.use(express.json())
+
+router.use(cors())
 
 //registers a user
 router.post('/register-user', async (req, res) => {

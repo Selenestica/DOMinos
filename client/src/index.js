@@ -8,6 +8,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import App from './App';
 import Navbar from './components/Navbar'
 import CustomerInfo from './components/CustomerInfo'
+import Menu from './components/Menu'
+import Register from './components/Register'
 
 // CSS IMPORTS
 import './css/index.css';
@@ -20,7 +22,9 @@ ReactDOM.render(
             <Navbar />
             <Switch>
                 <Route exact path='/' component = {App} />
+                <Route exact path='/register' component = {Register} />
                 <Route exact path='/order-details' component = {CustomerInfo} />
+                <Route exact path='/menu' component = {Menu} />
             </Switch>
         </BrowserRouter>
     
