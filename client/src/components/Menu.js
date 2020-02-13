@@ -25,22 +25,26 @@ function Menu() {
     useEffect(() => {
         fetch('https://cors-anywhere.herokuapp.com/https://order.dominos.com/power/store/6551/menu?lang=en&structured=true')
         .then(response => response.json())
-        .then(json => console.log(json.Products.S_MARIN.Name) /* {
+        .then(json =>  {
 
-            const menuProducts = json.Products.map(products => { 
-                return {
-                    name: products
-                }
+            //console.log(Object.keys(json.Products))
+            const menuProducts = Object.keys(json.Products).map((key) => {
+                console.log(key, json.Products[key].Name)
+                return json.Products[key].Name
             })
 
             setMenuData(menuProducts)
-        }*/)
+        })
     }, [])
 
     return(<>
     
-        <div>
-            {menuData}
+        <div className="container">
+            <div className="row">
+                <div className="col s12">
+                    {menuData}
+                </div>
+            </div>
         </div>
     
     </>)
