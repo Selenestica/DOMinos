@@ -12,29 +12,93 @@ function CustomerInfo() {
     }
 
     const onHandleSubmitCustomerInfo = () => {
-        fetch('')
+        fetch('http://localhost:1200/order/add-order', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(customerInfo)
+        }).then(response => response.json())
+        .then(json => console.log(json))
     }
 
     return(<>
 
         <div className="container">
+        <div className="row buttons-row">
+          <div className="button-as">
+            <div id="delivery-button-div" className="col l6 s12 m12 purple">
+              <div>
+                <i className="material-icons delivery-icon">drive_eta</i>
+                <button value="Delivery" onClick={handleChange} name="chosenDeliveryMethod"><h1 className="button-h1s">Delivery</h1></button>
+              </div>
+            </div>
+          </div>
+          <div className="button-as">
+            <div id="carryout-button-div" className="col l6 s12 m12 green">
+              <div>
+                <i className="material-icons carryout-icon">local_convenience_store</i>
+                <button value="Carryout" onClick={handleChange} name="chosenDeliveryMethod"><h1 className="button-h1s">Carryout</h1></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
             <div className="row">
-                <div className="col s12 m8 l6">
-                    <div className="purple lighten-4">
+                <div className="col s12 m12 l12">
+                    <div className="blue lighten-5">
                         <p>Contact Info</p>
-                        <input placeholder="first name" />
-                        <input placeholder="last name" />
-                        <input placeholder="email" />
-                        <input placeholder="phone number" />
+                        <input type="text" onChange={handleChange} name="firstName" placeholder="first name" />
+                        <input type="text" onChange={handleChange} name="lastName" placeholder="last name" />
+                        <input type="text" onChange={handleChange} name="email" placeholder="email" />
+                        <input type="text" onChange={handleChange} name="phone" placeholder="phone number" />
                     </div>
-                    <div className="blue lighten-4">
+                    <div className="blue lighten-5">
                         <p>Address</p>
-                        <input placeholder="street" />
-                        <input placeholder="city" />
-                        <input placeholder="state" />
-                        <input placeholder="zip code" />
+                        <input type="text" onChange={handleChange} name="street" placeholder="street" />
+                        <input type="text" onChange={handleChange} name="city" placeholder="city" />
+                        <input type="text" onChange={handleChange} name="state" placeholder="state" />
+                        <input type="text" onChange={handleChange} name="zip" placeholder="zip code" />
                     </div>
-                    <a href="/menu"><button>Next Step</button></a>
+                    <div className="blue lighten-5">
+                        <p>Locations near you</p>
+                        <ul>
+                            <li>
+                                <p>Store address</p>
+                                <button onClick={handleChange} name="chosenStore" value="6651">Select</button>
+                            </li>
+                            <li>
+                                <p>Store address</p>
+                                <button onClick={handleChange} name="chosenStore" value="6651">Select</button>
+                            </li>                            
+                            <li>
+                                <p>Store address</p>
+                                <button onClick={handleChange} name="chosenStore" value="6651">Select</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="blue lighten-5">
+                        <p>Menu</p>
+                        <div className="row">
+                            <div className="col l4 m4 s12">
+                                <button onClick={handleChange} name="itemCode" value="14SCREEN"><h1>Cheese Pizza</h1></button>
+                            </div>
+                            <div className="col l4 m4 s12">
+                                <button onClick={handleChange} name="itemCode" value="14SCREEN"><h1>Cheese Pizza</h1></button>
+                            </div>
+                            <div className="col l4 m4 s12">
+                                <button onClick={handleChange} name="itemCode" value="14SCREEN"><h1>Cheese Pizza</h1></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="blue lighten-5">
+                        <p>Payment</p>
+                        <input type="text" onChange={handleChange} name="cardNumber" placeholder="cc number" />
+                        <input type="text" onChange={handleChange} name="expiration" placeholder="expiration" />
+                        <input type="text" onChange={handleChange} name="securityCode" placeholder="security code" />
+                        <input type="text" onChange={handleChange} name="cardZip" placeholder="zip code" />
+                    </div>
+                    <button onClick={onHandleSubmitCustomerInfo}><h1>Place Order</h1></button>
                 </div>
             </div>
         </div>   

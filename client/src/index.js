@@ -12,6 +12,7 @@ import CustomerInfo from './components/CustomerInfo'
 // CSS IMPORTS
 import './css/index.css';
 import './css/Navbar.css'
+import './css/CustomerInfo.css'
 import 'materialize-css/dist/css/materialize.min.css';
 
 ReactDOM.render(
