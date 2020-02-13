@@ -1,6 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import DrinksMenu from './DrinksMenu'
+import PizzaMenu from './PizzaMenu'
 
 function CustomerInfo() {
+
+    const [menuData, setMenuData] = useState([])
+
+    useEffect(() => {
+        fetch('https://cors-anywhere.herokuapp.com/https://order.dominos.com/power/store/6551/menu?lang=en&structured=true')
+        .then(response => response.json())
+        .then(json =>  {
+
+            //console.log(Object.keys(json.Products))
+            const menuProducts = Object.keys(json.Products).map((key) => {
+                return (
+                
+                        <li id={key}>{json.Products[key].Name}</li>
+
+                )
+            })
+
+            setMenuData(menuProducts)
+        })
+    }, [])
 
     const [customerInfo, setCustomerInfo] = useState({})
 
@@ -25,27 +47,38 @@ function CustomerInfo() {
     return(<>
 
         <div className="container">
-        <div className="row buttons-row">
-          <div className="button-as">
-            <div id="delivery-button-div" className="col l6 s12 m12 purple">
-              <div>
-                <i className="material-icons delivery-icon">drive_eta</i>
-                <button value="Delivery" onClick={handleChange} name="chosenDeliveryMethod"><h1 className="button-h1s">Delivery</h1></button>
-              </div>
+
+            <div className="row buttons-row">
+                <div className="button-as">
+                    <div id="delivery-button-div" className="col l6 s12 m12 purple">
+                        <div>
+                            <i className="material-icons delivery-icon">drive_eta</i>
+                            <button value="Delivery" onClick={handleChange} name="chosenDeliveryMethod"><h1 className="button-h1s">Delivery</h1></button>
+                        </div>
+                    </div>
+                </div>
+                <div className="button-as">
+                    <div id="carryout-button-div" className="col l6 s12 m12 green">
+                        <div>
+                            <i className="material-icons carryout-icon">local_convenience_store</i>
+                            <button value="Carryout" onClick={handleChange} name="chosenDeliveryMethod"><h1 className="button-h1s">Carryout</h1></button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div className="button-as">
-            <div id="carryout-button-div" className="col l6 s12 m12 green">
-              <div>
-                <i className="material-icons carryout-icon">local_convenience_store</i>
-                <button value="Carryout" onClick={handleChange} name="chosenDeliveryMethod"><h1 className="button-h1s">Carryout</h1></button>
-              </div>
-            </div>
-          </div>
-        </div>
 
             <div className="row">
-                <div className="col s12 m12 l12">
+                <div className="col s12 l6">
+                    <div className="red lighten-4">
+                        <h4>Drinks</h4>
+                        <DrinksMenu />
+                    </div>
+                    <div className="red lighten-4">
+                        <h4>Pizzas</h4>
+                        <PizzaMenu />
+                    </div>
+                </div>
+                <div className="col s12 m12 l6">
                     <div className="blue lighten-5">
                         <p>Contact Info</p>
                         <input type="text" onChange={handleChange} name="firstName" placeholder="first name" />
@@ -78,20 +111,6 @@ function CustomerInfo() {
                         </ul>
                     </div>
                     <div className="blue lighten-5">
-                        <p>Menu</p>
-                        <div className="row">
-                            <div className="col l4 m4 s12">
-                                <button onClick={handleChange} name="itemCode" value="14SCREEN"><h1>Cheese Pizza</h1></button>
-                            </div>
-                            <div className="col l4 m4 s12">
-                                <button onClick={handleChange} name="itemCode" value="14SCREEN"><h1>Cheese Pizza</h1></button>
-                            </div>
-                            <div className="col l4 m4 s12">
-                                <button onClick={handleChange} name="itemCode" value="14SCREEN"><h1>Cheese Pizza</h1></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="blue lighten-5">
                         <p>Payment</p>
                         <input type="text" onChange={handleChange} name="cardNumber" placeholder="cc number" />
                         <input type="text" onChange={handleChange} name="expiration" placeholder="expiration" />
@@ -101,6 +120,7 @@ function CustomerInfo() {
                     <button onClick={onHandleSubmitCustomerInfo}><h1>Place Order</h1></button>
                 </div>
             </div>
+
         </div>   
 
     </>)

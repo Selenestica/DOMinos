@@ -16,7 +16,7 @@ function App() {
               </div>
             </div>
           </a>
-          <a className="button-as" href="/menu">
+          <a className="button-as" href="/full-menu">
             <div id="carryout-button-div" className="col l6 s12 m12 purple">
               <div>
                 <i className="material-icons carryout-icon">local_convenience_store</i>
