@@ -1,3 +1,5 @@
+// store ID, item
+
 const express = require('express')
 const pizzaapi = require('dominos')
 const router = express.Router()
@@ -5,9 +7,11 @@ const cors = require('cors')
 const util = require('util')
 router.use(express.urlencoded({extended: false}))
 router.use(cors())
+router.use(express.json())
 
 router.post('/add-order', async (req, res) => {
 
+    console.log(req.body)
     let newCustomer = new pizzaapi.Customer({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -20,31 +24,8 @@ router.post('/add-order', async (req, res) => {
         email: req.body.email, 
         phone: req.body.phone
     })
-
-    /*
-    let thisCustomer = await newCustomer.save()
-    await console.log(thisCustomer)
-
-    if (thisCustomer !== null) {
-        console.log('customer saved!')
-    }
-    else {
-        console.log('the customer is missing required fields :/')
-    }
-    */
-
-    let addressString = `${req.body.street}, ${req.body.city}, ${req.body.state}, ${req.body.zip}`
+    
     let chosenDeliveryMethod = req.body.chosenDeliveryMethod
-    console.log(addressString)
-
-    //finds nearby stores... important for finding the id of the store nearest you
-    pizzaapi.Util.findNearbyStores(
-        addressString,
-        req.body.chosenDeliveryMethod,
-        function(storeData) {
-        console.log(JSON.stringify(storeData))
-        }
-    )
 
     //stores your store id in a variable
     let myStore = new pizzaapi.Store({ID: req.body.chosenStore})
@@ -66,8 +47,7 @@ router.post('/add-order', async (req, res) => {
     )
     order.StoreOrderID = order.StoreID
 
-    console.log(newCustomer)
-    console.log('hi')
+    console.log(order)
 
     //checks to see if the order will go through
     order.validate(
