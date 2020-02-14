@@ -1,3 +1,5 @@
+//"find": "https://order.dominos.com/power/store-locator?s=${line1}&c=${line2}&type=${type}",
+
 import React, {useEffect, useState} from 'react'
 
 function ClosestStore() {
@@ -19,7 +21,7 @@ function ClosestStore() {
                     </div>)
             })
 
-            setMyStore(storeDetails)
+            setMyStore(storeDetails[0])
         })
     }, [])
 
