@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import DrinksMenu from './DrinksMenu'
 import PizzaMenu from './PizzaMenu'
+import ClosestStore from './ClosestStore'
 
 function CustomerInfo() {
 
@@ -94,21 +95,8 @@ function CustomerInfo() {
                         <input type="text" onChange={handleChange} name="zip" placeholder="zip code" />
                     </div>
                     <div className="blue lighten-5">
-                        <p>Locations near you</p>
-                        <ul>
-                            <li>
-                                <p>Store address</p>
-                                <button onClick={handleChange} name="chosenStore" value="6651">Select</button>
-                            </li>
-                            <li>
-                                <p>Store address</p>
-                                <button onClick={handleChange} name="chosenStore" value="6651">Select</button>
-                            </li>                            
-                            <li>
-                                <p>Store address</p>
-                                <button onClick={handleChange} name="chosenStore" value="6651">Select</button>
-                            </li>
-                        </ul>
+                        <p>Your Domino's</p>
+                        <ClosestStore />
                     </div>
                     <div className="blue lighten-5">
                         <p>Payment</p>
