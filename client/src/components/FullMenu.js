@@ -12,7 +12,6 @@ function FullMenu() {
             //console.log(Object.keys(json.Products))
             const menuProducts = Object.keys(json.Products).map((key) => {
                 if (json.Products[key].ProductType === "Drinks" || json.Products[key].ProductType === "Pizza")
-
                 return (
                     <div className="item-div yellow lighten-4">
                         <li id={key}>{json.Products[key].Name}</li>

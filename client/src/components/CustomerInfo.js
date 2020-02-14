@@ -1,5 +1,3 @@
-//store id and item are going to need redux!!!
-
 import React, {useState} from 'react'
 import DrinksMenu from './DrinksMenu'
 import PizzaMenu from './PizzaMenu'
@@ -63,22 +61,23 @@ function CustomerInfo() {
                 </div>
                 <div className="col s12 m12 l6">
                     <div className="blue lighten-5">
+                        <p>Address</p>
+                        <input type="text" onChange={handleChange} onChange={handleAddressChange} name="street" placeholder="street" />
+                        <input type="text" onChange={handleChange} onChange={handleAddressChange} name="city" placeholder="city" />
+                        <input type="text" onChange={handleChange} onChange={handleAddressChange} name="state" placeholder="state" />
+                        <input type="text" onChange={handleChange} onChange={handleAddressChange} name="zip" placeholder="zip code" />
+                        <button>Find your Domino's</button>
+                    </div>
+                    <div className="blue lighten-5">
+                        <p>Your Domino's</p>
+                        <ClosestStore />
+                    </div>
+                    <div className="blue lighten-5">
                         <p>Contact Info</p>
                         <input type="text" onChange={handleChange} name="firstName" placeholder="first name" />
                         <input type="text" onChange={handleChange} name="lastName" placeholder="last name" />
                         <input type="text" onChange={handleChange} name="email" placeholder="email" />
                         <input type="text" onChange={handleChange} name="phone" placeholder="phone number" />
-                    </div>
-                    <div className="blue lighten-5">
-                        <p>Address</p>
-                        <input type="text" onChange={handleChange} name="street" placeholder="street" />
-                        <input type="text" onChange={handleChange} name="city" placeholder="city" />
-                        <input type="text" onChange={handleChange} name="state" placeholder="state" />
-                        <input type="text" onChange={handleChange} name="zip" placeholder="zip code" />
-                    </div>
-                    <div className="blue lighten-5">
-                        <p>Your Domino's</p>
-                        <ClosestStore />
                     </div>
                     <div className="blue lighten-5">
                         <p>Payment</p>

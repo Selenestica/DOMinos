@@ -15,9 +15,9 @@ function PizzaMenu() {
                 return (
                     <div>
                         <li className="productName" id={key}>{json.Products[key].Name}</li>
-                        <button className="pizza-size-button">{json.Products[key].Variants[0]}</button>
-                        <button className="pizza-size-button">{json.Products[key].Variants[3]}</button>
-                        <button className="pizza-size-button">{json.Products[key].Variants[6]}</button>
+                        <button name={json.Products[key].Variants[0]} className="pizza-size-button">{json.Products[key].Variants[0]}</button>
+                        <button name={json.Products[key].Variants[3]} className="pizza-size-button">{json.Products[key].Variants[3]}</button>
+                        <button name={json.Products[key].Variants[6]} className="pizza-size-button">{json.Products[key].Variants[6]}</button>
                     </div>
                 )
             })
