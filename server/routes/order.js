@@ -6,7 +6,7 @@ const util = require('util')
 router.use(express.urlencoded({extended: false}))
 router.use(cors())
 
-router.post('/add-order', (req, res) => {
+router.post('/add-order', async (req, res) => {
 
     let newCustomer = new pizzaapi.Customer({
         firstName: req.body.firstName,
@@ -21,15 +21,28 @@ router.post('/add-order', (req, res) => {
         phone: req.body.phone
     })
 
+    /*
+    let thisCustomer = await newCustomer.save()
+    await console.log(thisCustomer)
+
+    if (thisCustomer !== null) {
+        console.log('customer saved!')
+    }
+    else {
+        console.log('the customer is missing required fields :/')
+    }
+    */
+
     let addressString = `${req.body.street}, ${req.body.city}, ${req.body.state}, ${req.body.zip}`
     let chosenDeliveryMethod = req.body.chosenDeliveryMethod
+    console.log(addressString)
 
     //finds nearby stores... important for finding the id of the store nearest you
     pizzaapi.Util.findNearbyStores(
         addressString,
         req.body.chosenDeliveryMethod,
         function(storeData) {
-        // console.log(JSON.stringify(storeData))
+        console.log(JSON.stringify(storeData))
         }
     )
 
@@ -54,6 +67,7 @@ router.post('/add-order', (req, res) => {
     order.StoreOrderID = order.StoreID
 
     console.log(newCustomer)
+    console.log('hi')
 
     //checks to see if the order will go through
     order.validate(
