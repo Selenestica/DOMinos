@@ -13,7 +13,9 @@ function DrinksMenu() {
             const menuProducts = Object.keys(json.Products).map((key) => {
                 if (json.Products[key].ProductType === "Drinks")
                 return (
+                    <div>
                         <li className="productName" id={key}><button className="productButton">{json.Products[key].Name}</button></li>
+                    </div>
                 )
             })
 

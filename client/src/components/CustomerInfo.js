@@ -1,3 +1,5 @@
+//store id and item are going to need redux!!!
+
 import React, {useState} from 'react'
 import DrinksMenu from './DrinksMenu'
 import PizzaMenu from './PizzaMenu'
@@ -11,7 +13,7 @@ function CustomerInfo() {
         setCustomerInfo({
             ...customerInfo,
             [e.target.name]: e.target.value
-        })
+        }) 
     }
 
     const onHandleSubmitCustomerInfo = () => {

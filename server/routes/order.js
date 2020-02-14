@@ -1,5 +1,3 @@
-// store ID, item
-
 const express = require('express')
 const pizzaapi = require('dominos')
 const router = express.Router()

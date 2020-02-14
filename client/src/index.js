@@ -12,9 +12,11 @@ import FullMenu from './components/FullMenu'
 import Register from './components/Register'
 
 // CSS IMPORTS
-import './css/index.css';
+import './css/index.css'
 import './css/Navbar.css'
+import './css/FullMenu.css'
 import './css/CustomerInfo.css'
+import './css/PizzaMenu.css'
 import 'materialize-css/dist/css/materialize.min.css';
 
 ReactDOM.render(

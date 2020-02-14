@@ -13,7 +13,12 @@ function PizzaMenu() {
             const menuProducts = Object.keys(json.Products).map((key) => {
                 if (json.Products[key].ProductType === "Pizza")
                 return (
-                        <li className="productName" id={key}><button className="productButton">{json.Products[key].Name}</button></li>
+                    <div>
+                        <li className="productName" id={key}>{json.Products[key].Name}</li>
+                        <button className="pizza-size-button">{json.Products[key].Variants[0]}</button>
+                        <button className="pizza-size-button">{json.Products[key].Variants[3]}</button>
+                        <button className="pizza-size-button">{json.Products[key].Variants[6]}</button>
+                    </div>
                 )
             })
 
