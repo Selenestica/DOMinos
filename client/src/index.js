@@ -13,6 +13,7 @@ import Navbar from './components/Navbar'
 import CustomerInfo from './components/CustomerInfo'
 import FullMenu from './components/FullMenu'
 import Register from './components/Register'
+import Login from './components/Login'
 
 // CSS IMPORTS
 import './css/index.css'
@@ -31,6 +32,7 @@ ReactDOM.render(
                     <Navbar />
                     <Switch>
                         <Route exact path='/' component = {App} />
+                        <Route exact path='/login' component = {Login} />
                         <Route exact path='/register' component = {Register} />
                         <Route exact path='/order-details' component = {CustomerInfo} />
                         <Route exact path='/full-menu' component = {FullMenu} />

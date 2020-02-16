@@ -5,11 +5,12 @@ const dotenv = require('dotenv')
 const util = require('util')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const PORT = 1200
 const app = express()
+const jwt = require('jsonwebtoken')
+const path = require('path')
 global.bcrypt = require('bcrypt')
 global.SALT_ROUNDS = 10
-const jwt = require('jsonwebtoken')
+const PORT = 1200
 
 // user route
 const userRouter = require('./routes/userRoute')

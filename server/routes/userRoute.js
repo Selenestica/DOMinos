@@ -70,8 +70,30 @@ router.post('/register-user', async (req, res) => {
 })
 
 //user login
-router.post('/login', (req, res) => {
-    
+router.post('/login', async (req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+
+    let permUser = await User.findOne({email})
+    .then(function(permUser) {
+        if (!permUser) {
+            console.log("There isn't an account associated with this email.")
+        }
+        else {
+            bcrypt.compare(password, permUser.password, function(err, result) {
+                if (result == true) {
+                    console.log(permUser.password)
+                    const token = jwt.sign({email: permUser.email}, '91142069R2D2C3PO#getthatmoney')
+                    res.json({token: token})
+                }
+                else {
+                    console.log("Incorrect... password?")
+                }
+            })
+        }
+    })
+
+
 })
 
 //view all registered users
@@ -100,7 +122,21 @@ router.put('/view-registered-users/update/:userId', (req, res) => {
         },
         email: req.body.email, 
         phone: req.body.phone,
-        password: hash 
+        password: hash,
+        pastOrders: {
+            item: {
+                code: req.body.item_code,
+                options: req.body.item_options,
+                quantity: req.body.item_quantity
+            },
+            date_ordered: req.body.date_ordered,
+            delivery_address: {
+                Street: req.body.street,
+                City: req.body.city,
+                Region: req.body.state,
+                PostalCode: req.body.zip
+            }
+        }
     }).then(res.send('Profile updated!')).catch(error => res.send(error))
 })
 
