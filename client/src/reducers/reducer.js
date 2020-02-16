@@ -1,18 +1,25 @@
-/*
 const initialState = {
-    isAuthenticated: false
+    customerAddress: '',
+    customerStreetAddress: ''
 }
 
-const reducer = (state = initialState, action => {
+const reducer = (state = initialState, action) => {
 
-    if (action.type === 'ON_LOGIN_SUCCESS') {
+    if (action.type === 'ADDRESS_SAVED') {
         return {
             ...state,
-            isAuthenticated: action.token == null ? false : true
+            customerAddress: action.customerAddress
         }
     }
 
-})
+    else if (action.type === 'STREET_ADDRESS_SAVED') {
+        return {
+            ...state,
+            customerStreetAddress: action.customerStreetAddress
+        }
+    }
+
+        return state
+}
 
 export default reducer
-*/

@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
 import DrinksMenu from './DrinksMenu'
 import PizzaMenu from './PizzaMenu'
 import ClosestStore from './ClosestStore'
 
-function CustomerInfo() {
+function CustomerInfo(props) {
 
     const [customerInfo, setCustomerInfo] = useState({})
 
@@ -23,6 +24,18 @@ function CustomerInfo() {
             body: JSON.stringify(customerInfo)
         }).then(response => response.json())
         .then(json => console.log(json))
+    }
+
+    const [customerAddress, setCustomerAddress] = useState('')
+
+    const handleAddressChange = (e) => {
+        setCustomerAddress(e.target.value)
+    }
+
+    const [customerStreetAddress, setCustomerStreetAddress] = useState('')
+
+    const handleStreetAddressChange = (e) => {
+        setCustomerStreetAddress(e.target.value)
     }
 
     return(<>
@@ -62,15 +75,21 @@ function CustomerInfo() {
                 <div className="col s12 m12 l6">
                     <div className="blue lighten-5">
                         <p>Address</p>
-                        <input type="text" onChange={handleChange} onChange={handleAddressChange} name="street" placeholder="street" />
-                        <input type="text" onChange={handleChange} onChange={handleAddressChange} name="city" placeholder="city" />
-                        <input type="text" onChange={handleChange} onChange={handleAddressChange} name="state" placeholder="state" />
-                        <input type="text" onChange={handleChange} onChange={handleAddressChange} name="zip" placeholder="zip code" />
-                        <button>Find your Domino's</button>
+                        <input type="text" onChange={handleStreetAddressChange} name="street" placeholder="street" />
+                        <button onClick={() => props.findStoreStreet(customerStreetAddress)}>Input</button>
+                        <input type="text" onChange={handleAddressChange} name="city" placeholder="city, state, zip code" />
+                        <button onClick={() => props.findStore(customerAddress)}>Find your Domino's</button>
                     </div>
                     <div className="blue lighten-5">
                         <p>Your Domino's</p>
                         <ClosestStore />
+                    </div>
+                    <div className="blue lighten-5">
+                        <p>Address</p>
+                        <input type="text" onChange={handleChange} name="street" placeholder="street" />
+                        <input type="text" onChange={handleChange} name="city" placeholder="city" />
+                        <input type="text" onChange={handleChange} name="state" placeholder="state" />
+                        <input type="text" onChange={handleChange} name="zip" placeholder="zip code" />
                     </div>
                     <div className="blue lighten-5">
                         <p>Contact Info</p>
@@ -96,4 +115,11 @@ function CustomerInfo() {
 
 }
 
-export default CustomerInfo
+const mapDispatchToProps = (dispatch) => {
+    return {
+        findStore: (newCustomerAddress) => dispatch({type: 'ADDRESS_SAVED', customerAddress: newCustomerAddress}),
+        findStoreStreet: (newCustomerStreetAddress) => dispatch({type: 'STREET_ADDRESS_SAVED', customerStreetAddress: newCustomerStreetAddress})
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CustomerInfo)

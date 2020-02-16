@@ -51,7 +51,7 @@ router.post('/add-order', async (req, res) => {
     order.validate(
         function(result) {
             console.log("*********************************** Order Validated ************************************************************************************************************")
-            //console.log(util.inspect(result, false, null, true))
+            console.log(util.inspect(result, false, null, true))
         }
     )
 

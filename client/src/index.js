@@ -3,6 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import reducer from './reducers/reducer'
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
 
 // COMPONENT IMPORTS
 import App from './App';
@@ -19,18 +22,22 @@ import './css/CustomerInfo.css'
 import './css/PizzaMenu.css'
 import 'materialize-css/dist/css/materialize.min.css';
 
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) 
+
 ReactDOM.render(
-        <BrowserRouter>
-            <Navbar />
-            <Switch>
-                <Route exact path='/' component = {App} />
-                <Route exact path='/register' component = {Register} />
-                <Route exact path='/order-details' component = {CustomerInfo} />
-                <Route exact path='/full-menu' component = {FullMenu} />
-            </Switch>
-        </BrowserRouter>
-    
-    
+
+            <Provider store = {store}>
+                <BrowserRouter>
+                    <Navbar />
+                    <Switch>
+                        <Route exact path='/' component = {App} />
+                        <Route exact path='/register' component = {Register} />
+                        <Route exact path='/order-details' component = {CustomerInfo} />
+                        <Route exact path='/full-menu' component = {FullMenu} />
+                    </Switch>
+                </BrowserRouter>
+            </Provider>
+
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
