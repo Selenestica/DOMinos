@@ -5,29 +5,32 @@ function ClosestStore(props) {
 
     const [myStore, setMyStore] = useState([])
 
-   
-    //console.log(url)
-
     useEffect(() => {
 
         const strAddress = props.address.street
         const cityAddress = props.address.city
         const url = `https://cors-anywhere.herokuapp.com/https://order.dominos.com/power/store-locator?s=${strAddress}&c=${cityAddress}&type=`
 
-
-        console.log(url)
         fetch(url)
         .then(response => response.json())
         .then(json => {
-            console.log(json)
             const storeDetails = Object.keys(json.Stores).map((key) => {
 
-                return(<div>
+                let storeId = json.Stores[key].StoreID
+
+                return(
+                
+                <div>
                     <p>Store #: {json.Stores[key].StoreID}</p>
                     <p>Address: {json.Stores[key].AddressDescription}</p>
                     <p>Phone: {json.Stores[key].Phone}</p>
                     <p>---------------</p>
-                    </div>)
+                    <div className="step-2-div">
+                        <h4>Step 2: Choose what you want from the menu</h4>
+                    </div>
+                    <button onClick={() => props.getStoreID(storeId)}>See the menu</button>
+                </div>)
+
             })
 
             setMyStore(storeDetails[0])
@@ -48,4 +51,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(ClosestStore)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getStoreID: (newStoreId) => dispatch({type: 'STORE_ID_SAVED', storeId: newStoreId})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClosestStore)

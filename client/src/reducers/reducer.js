@@ -1,6 +1,8 @@
 const initialState = {
     customerAddress: '',
-    addressNotNull: false    
+    addressNotNull: false,  
+    storeId: '',
+    storeIdNotNull: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +12,14 @@ const reducer = (state = initialState, action) => {
             ...state,
             customerAddress: action.customerAddress,
             addressNotNull: true
+        }
+    }
+
+    else if (action.type === 'STORE_ID_SAVED') {
+        return {
+            ...state,
+            storeId: action.storeId,
+            storeIdNotNull: true
         }
     }
 

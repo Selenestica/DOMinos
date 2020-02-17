@@ -62,23 +62,25 @@ function CustomerInfo(props) {
             </div>
 
             <div className="row">
+
                 <div className="col s12 l6">
                     <div className="red lighten-4">
                         <h4>Drinks</h4>
-                        <DrinksMenu />
+                        {props.storeIdNotNull ? <DrinksMenu /> : null}
                     </div>
                     <div className="red lighten-4">
                         <h4>Pizzas</h4>
-                        <PizzaMenu />
+                        {props.storeIdNotNull ? <PizzaMenu /> : null}
                     </div>
                 </div>
+
                 <div className="col s12 m12 l6">
+                    <h4>Step 1: Find the Domino's nearest to you</h4>
                     <div className="blue lighten-5">
                         <p>Address</p>
                         <input type="text" onChange={handleAddressChange} name="street" placeholder="street" />
                         <input type="text" onChange={handleAddressChange} name="city" placeholder="city, state, zip code" />
                         <button onClick={() => props.findStore(customerAddress)}>Find your Domino's</button>
-
                     </div>
                     <div className="blue lighten-5">
                         <p>Your Domino's</p>
@@ -123,7 +125,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        addressNotNull: state.addressNotNull
+        addressNotNull: state.addressNotNull,
+        storeIdNotNull: state.storeIdNotNull
     }
 }
 
