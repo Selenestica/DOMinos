@@ -1,6 +1,8 @@
 const initialState = {
     customerAddress: '',
-    customerStreetAddress: ''
+    addressNotNull: false,  
+    storeId: '',
+    storeIdNotNull: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -8,14 +10,16 @@ const reducer = (state = initialState, action) => {
     if (action.type === 'ADDRESS_SAVED') {
         return {
             ...state,
-            customerAddress: action.customerAddress
+            customerAddress: action.customerAddress,
+            addressNotNull: true
         }
     }
 
-    else if (action.type === 'STREET_ADDRESS_SAVED') {
+    else if (action.type === 'STORE_ID_SAVED') {
         return {
             ...state,
-            customerStreetAddress: action.customerStreetAddress
+            storeId: action.storeId,
+            storeIdNotNull: true
         }
     }
 

@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react'
+import {connect} from 'react-redux'
 
-function DrinksMenu() {
+function DrinksMenu(props) {
 
     const [menuData, setMenuData] = useState([])
 
     useEffect(() => {
-        fetch('https://cors-anywhere.herokuapp.com/https://order.dominos.com/power/store/6551/menu?lang=en&structured=true')
+
+        const storeId = props.storeId
+
+        fetch(`https://cors-anywhere.herokuapp.com/https://order.dominos.com/power/store/${storeId}/menu?lang=en&structured=true`)
         .then(response => response.json())
         .then(json =>  {
 
@@ -37,4 +41,10 @@ function DrinksMenu() {
 
 }
 
-export default DrinksMenu
+const mapStateToProps = (state) => {
+    return {
+        storeId: state.storeId
+    }
+}
+
+export default connect(mapStateToProps)(DrinksMenu)
