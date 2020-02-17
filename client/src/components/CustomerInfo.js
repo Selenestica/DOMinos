@@ -26,17 +26,17 @@ function CustomerInfo(props) {
         .then(json => console.log(json))
     }
 
-    const [customerAddress, setCustomerAddress] = useState('')
+    const [customerAddress, setCustomerAddress] = useState({})
 
     const handleAddressChange = (e) => {
-        setCustomerAddress(e.target.value)
+        setCustomerAddress({
+            ...customerAddress,
+            [e.target.name]: e.target.value
+        }
+        )
     }
 
-    const [customerStreetAddress, setCustomerStreetAddress] = useState('')
-
-    const handleStreetAddressChange = (e) => {
-        setCustomerStreetAddress(e.target.value)
-    }
+    //const addressNotNll = props.addressNotNull
 
     return(<>
 
@@ -75,14 +75,14 @@ function CustomerInfo(props) {
                 <div className="col s12 m12 l6">
                     <div className="blue lighten-5">
                         <p>Address</p>
-                        <input type="text" onChange={handleStreetAddressChange} name="street" placeholder="street" />
-                        <button onClick={() => props.findStoreStreet(customerStreetAddress)}>Input</button>
+                        <input type="text" onChange={handleAddressChange} name="street" placeholder="street" />
                         <input type="text" onChange={handleAddressChange} name="city" placeholder="city, state, zip code" />
                         <button onClick={() => props.findStore(customerAddress)}>Find your Domino's</button>
+
                     </div>
                     <div className="blue lighten-5">
                         <p>Your Domino's</p>
-                        <ClosestStore />
+                        {props.addressNotNull ? <ClosestStore /> : null}
                     </div>
                     <div className="blue lighten-5">
                         <p>Address</p>
@@ -118,8 +118,13 @@ function CustomerInfo(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         findStore: (newCustomerAddress) => dispatch({type: 'ADDRESS_SAVED', customerAddress: newCustomerAddress}),
-        findStoreStreet: (newCustomerStreetAddress) => dispatch({type: 'STREET_ADDRESS_SAVED', customerStreetAddress: newCustomerStreetAddress})
     }
 }
 
-export default connect(null, mapDispatchToProps)(CustomerInfo)
+const mapStateToProps = (state) => {
+    return {
+        addressNotNull: state.addressNotNull
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomerInfo)
