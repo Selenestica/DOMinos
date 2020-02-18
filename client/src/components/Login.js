@@ -24,9 +24,12 @@ function Login(props) {
         .then(response => response.json())
         .then(json => {
             const token = json.token
+            const userEmail = loginInfo.email
             localStorage.setItem('jsonwebtoken', token)
+            localStorage.setItem('userEmail', userEmail)
             setAuthenticationHeader(token)
             props.onLoginSuccess(token)
+            props.setUser(userEmail)
         })
     }
 
@@ -69,7 +72,8 @@ function Login(props) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onLoginSuccess: (token) => dispatch({type: 'ON_LOGIN_SUCCESS', token: token})
+        onLoginSuccess: (token) => dispatch({type: 'ON_LOGIN_SUCCESS', token: token}),
+        setUser: (userEmail) => dispatch({type: 'SET_USER_EMAIL', userEmail: userEmail})
     }
 }
 

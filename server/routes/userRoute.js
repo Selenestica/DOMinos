@@ -98,14 +98,15 @@ router.post('/login', async (req, res) => {
     })
 })
 
-router.post('/logout', (req, res) => {
-    const token = jwt.sign({email}, process.env.SECRET_KEY)
-    jwt.destroy(token)
-})
-
 //view all registered users
 router.get('/view-registered-users', (req, res) => {
     User.find({}).then(users => res.json(users))
+})
+
+//view your profile
+router.get('/view-user-profile/:userEmail', (req, res) => {
+    const email = req.params.userEmail
+    User.findOne({email}).then(user => res.json(user))
 })
 
 //unregister (delete) a user

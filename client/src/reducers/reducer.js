@@ -5,7 +5,8 @@ const initialState = {
     storeIdNotNull: false,
     pizzaId: '',
     isAuthenticated: false,
-    token: ''
+    token: '',
+    userEmail: ''
 }
 
 const reducer = (state = initialState, action) => {
