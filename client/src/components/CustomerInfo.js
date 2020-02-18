@@ -11,7 +11,9 @@ function CustomerInfo(props) {
     const handleChange = (e) => {
         setCustomerInfo({
             ...customerInfo,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            chosenStore: props.storeId,
+            itemCode: props.pizzaId,
         }) 
     }
 
@@ -71,6 +73,7 @@ function CustomerInfo(props) {
                     <div className="red lighten-4">
                         <h4>Pizzas</h4>
                         {props.storeIdNotNull ? <PizzaMenu /> : null}
+                        <input required type="number" placeholder="quantity" name="quantity" onChange={handleChange} />
                     </div>
                 </div>
 
@@ -85,7 +88,11 @@ function CustomerInfo(props) {
                     <div className="blue lighten-5">
                         <p>Your Domino's</p>
                         {props.addressNotNull ? <ClosestStore /> : null}
+                        <input type="hidden" onChange={handleChange} name="chosenStore" value={props.storeId} />
+                        <input type="hidden" onChange={handleChange} name="itemCode" value={props.pizzaId} />
                     </div>
+
+                    <h4>Step 3: Enter your info, and place the order!</h4>
                     <div className="blue lighten-5">
                         <p>Address</p>
                         <input type="text" onChange={handleChange} name="street" placeholder="street" />
@@ -126,7 +133,9 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         addressNotNull: state.addressNotNull,
-        storeIdNotNull: state.storeIdNotNull
+        storeIdNotNull: state.storeIdNotNull,
+        storeId: state.storeId,
+        pizzaId: state.pizzaId,
     }
 }
 

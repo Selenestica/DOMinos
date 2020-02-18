@@ -13,14 +13,18 @@ function DrinksMenu(props) {
         .then(response => response.json())
         .then(json =>  {
 
-            //console.log(Object.keys(json.Products))
             const menuProducts = Object.keys(json.Products).map((key) => {
-                if (json.Products[key].ProductType === "Drinks")
+                if (json.Products[key].ProductType === "Drinks") {
+
+                let drinkId = json.Products[key].Variants[1]
+
                 return (
                     <div>
-                        <li className="productName" id={key}><button className="productButton">{json.Products[key].Name}</button></li>
+                        <li className="productName" id={key}>{json.Products[key].Name}</li>
+                        <button onClick={() => props.getDrink(drinkId)} className="productButton">2L Bottle</button>
                     </div>
                 )
+                }
             })
 
             setMenuData(menuProducts)
@@ -47,4 +51,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(DrinksMenu)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getDrink: (newDrink) => dispatch({type: 'SAVE_DRINK', drinkId: newDrink})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrinksMenu)
