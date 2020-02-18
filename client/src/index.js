@@ -6,6 +6,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import reducer from './reducers/reducer'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
+import { setAuthenticationHeader } from './utils/authentication';
 
 // COMPONENT IMPORTS
 import App from './App';
@@ -14,6 +15,8 @@ import CustomerInfo from './components/CustomerInfo'
 import FullMenu from './components/FullMenu'
 import Register from './components/Register'
 import Login from './components/Login'
+import UserProfile from './components/UserProfile'
+import requireAuth from './components/requireAuth'
 
 // CSS IMPORTS
 import './css/index.css'
@@ -27,6 +30,12 @@ import 'materialize-css/dist/css/materialize.min.css';
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) 
 
+const token = localStorage.getItem('jsonwebtoken')
+setAuthenticationHeader(token)
+if (token !== null) {
+    store.dispatch({type: 'ON_LOGIN_SUCCESS', token: token})
+}
+
 ReactDOM.render(
 
             <Provider store = {store}>
@@ -38,6 +47,7 @@ ReactDOM.render(
                         <Route exact path='/register' component = {Register} />
                         <Route exact path='/order-details' component = {CustomerInfo} />
                         <Route exact path='/full-menu' component = {FullMenu} />
+                        <Route exact path='/your-profile' component = {requireAuth(UserProfile)} />
                     </Switch>
                 </BrowserRouter>
             </Provider>

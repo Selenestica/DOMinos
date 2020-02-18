@@ -96,8 +96,11 @@ router.post('/login', async (req, res) => {
             })
         }
     })
+})
 
-
+router.post('/logout', (req, res) => {
+    const token = jwt.sign({email}, process.env.SECRET_KEY)
+    jwt.destroy(token)
 })
 
 //view all registered users

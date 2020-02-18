@@ -26,9 +26,7 @@ function Login(props) {
             const token = json.token
             localStorage.setItem('jsonwebtoken', token)
             setAuthenticationHeader(token)
-            console.log(props)
             props.onLoginSuccess(token)
-            console.log(token)
         })
     }
 
