@@ -38,8 +38,6 @@ function CustomerInfo(props) {
         )
     }
 
-    //const addressNotNll = props.addressNotNull
-
     return(<>
 
         <div className="container">

@@ -41,7 +41,16 @@ function Register() {
                     <input type="text" onChange={handleChange} name="state" placeholder="state" />
                     <input type="text" onChange={handleChange} name="zip" placeholder="zip code" />
                 </div>
-                <button onClick={onHandleRegisterUser}><h1>Register</h1></button>
+                <a onClick={onHandleRegisterUser} className="login-page-links" href="/register">
+                    <div className="button-as">
+                        <div id="carryout-button-div" className="col l12 s12 m12 green">
+                            <div>
+                                <i className="material-icons carryout-icon">person_add</i>
+                                <h1 className="button-h1s">Register</h1>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     

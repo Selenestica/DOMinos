@@ -2,10 +2,14 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 router.use(express.urlencoded({extended: false}))
+const dotenv = require('dotenv')
 const cors = require('cors')
 global.bcrypt = require('bcrypt')
 global.SALT_ROUNDS = 10
+const jwt = require('jsonwebtoken')
 router.use(express.json())
+
+dotenv.config()
 
 router.use(cors())
 
@@ -82,9 +86,9 @@ router.post('/login', async (req, res) => {
         else {
             bcrypt.compare(password, permUser.password, function(err, result) {
                 if (result == true) {
-                    console.log(permUser.password)
-                    const token = jwt.sign({email: permUser.email}, '91142069R2D2C3PO#getthatmoney')
+                    const token = jwt.sign({email: permUser.email}, process.env.SECRET_KEY)
                     res.json({token: token})
+                    console.log("Logged in! Your token is " + token)
                 }
                 else {
                     console.log("Incorrect... password?")

@@ -4,6 +4,7 @@ const initialState = {
     storeId: '',
     storeIdNotNull: false,
     pizzaId: '',
+    isAuthenticated: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +29,13 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             pizzaId: action.pizzaId
+        }
+    }
+
+    else if (action.type === 'ON_LOGIN_SUCCESS') {
+        return {
+            ...state,
+            isAuthenticated: true
         }
     }
 
