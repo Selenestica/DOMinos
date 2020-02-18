@@ -14,15 +14,17 @@ function PizzaMenu(props) {
         .then(json =>  {
 
             const menuProducts = Object.keys(json.Products).map((key) => {
-                if (json.Products[key].ProductType === "Pizza")
+                if (json.Products[key].ProductType === "Pizza") {
+
+                let pizzaId = json.Products[key].Variants[4]
+
                 return (
                     <div>
                         <li className="productName" id={key}>{json.Products[key].Name}</li>
-                        <button name={json.Products[key].Variants[0]} className="pizza-size-button">{json.Products[key].Variants[0]}</button>
-                        <button name={json.Products[key].Variants[3]} className="pizza-size-button">{json.Products[key].Variants[3]}</button>
-                        <button name={json.Products[key].Variants[6]} className="pizza-size-button">{json.Products[key].Variants[6]}</button>
+                        <button onClick={() => props.getPizza(pizzaId)} name="code" className="pizza-size-button">Add to order</button>
                     </div>
                 )
+                }
             })
 
             setMenuData(menuProducts)
@@ -49,4 +51,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(PizzaMenu)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getPizza: (newPizzaId) => dispatch({type: 'SAVE_PIZZA', pizzaId: newPizzaId})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PizzaMenu)
