@@ -9,7 +9,7 @@ router.use(express.json())
 
 router.post('/add-order', async (req, res) => {
 
-    console.log(req.body)
+    //console.log(req.body)
     let newCustomer = new pizzaapi.Customer({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -40,7 +40,7 @@ router.post('/add-order', async (req, res) => {
         new pizzaapi.Item({
             code: req.body.itemCode,
             options: [],
-            quantity: 1
+            quantity: req.body.quantity
         })
     )
     order.StoreOrderID = order.StoreID
@@ -58,7 +58,7 @@ router.post('/add-order', async (req, res) => {
     //see the price of the order without placing it
     order.price(
         function(result) {
-            console.log("*********************************** Price ************************************")
+            //console.log("*********************************** Price ************************************")
             //console.log(util.inspect(result, false, null, true))
         }
     )
