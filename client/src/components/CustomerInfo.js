@@ -14,6 +14,7 @@ function CustomerInfo(props) {
             [e.target.name]: e.target.value,
             chosenStore: props.storeId,
             itemCode: props.pizzaId,
+            drinkCode: props.drinkId
         }) 
     }
 
@@ -60,6 +61,7 @@ function CustomerInfo(props) {
                     {props.addressNotNull ? <ClosestStore /> : null}
                     <input type="hidden" onChange={handleChange} name="chosenStore" value={props.storeId} />
                     <input type="hidden" onChange={handleChange} name="itemCode" value={props.pizzaId} />
+                    <input type="hidden" onChange={handleChange} name="drinkCode" value={props.drinkId} />
                     <input type="hidden" onChange={handleChange} name="chosenDeliveryMethod" value="Delivery" />
                 </div>
             </div>
@@ -69,11 +71,12 @@ function CustomerInfo(props) {
                     <div className="red lighten-4">
                         <h4>Drinks</h4>
                         <DrinksMenu />
+                        <input required type="number" placeholder="how many drinks?" name="drinkQuantity" onChange={handleChange} />
                     </div>
                     <div className="red lighten-4">
                         <h4>Pizzas</h4>
                         <PizzaMenu />
-                        <input required type="number" placeholder="quantity" name="quantity" onChange={handleChange} />
+                        <input required type="number" placeholder="how many pizzas?" name="quantity" onChange={handleChange} />
                     </div>
                 </div>
             </div> : null}
@@ -122,6 +125,7 @@ const mapStateToProps = (state) => {
         storeIdNotNull: state.storeIdNotNull,
         storeId: state.storeId,
         pizzaId: state.pizzaId,
+        drinkId: state.drinkId
     }
 }
 
