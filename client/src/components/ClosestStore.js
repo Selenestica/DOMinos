@@ -18,7 +18,7 @@ function ClosestStore(props) {
 
                 let storeId = json.Stores[key].StoreID
 
-                return(
+                return(<>
                 
                 <div>
                     <p>Store #: {json.Stores[key].StoreID}</p>
@@ -27,9 +27,11 @@ function ClosestStore(props) {
                     <p>---------------</p>
                     <div className="step-2-div">
                         <h4>Step 2: Choose what you want from the menu</h4>
+                        <button onClick={() => props.getStoreID(storeId)}>See the menu</button>
                     </div>
-                    <button onClick={() => props.getStoreID(storeId)}>See the menu</button>
-                </div>)
+                </div>
+                
+                </>)
 
             })
 

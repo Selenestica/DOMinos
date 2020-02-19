@@ -22,9 +22,9 @@ function Navbar(props) {
             <a href="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down navbar-ul">
                 {!signedIn ? <li><a href="/login">login</a></li> : null}
-                {signedIn ? <li><button onClick={onHandleSignOut}>sign out</button></li> : null}
-                {!signedIn ? <li><a href="/register">Register</a></li> : null}
                 {signedIn ? <li><a href="/your-profile"><i className="material-icons carryout-icon">account_circle</i></a></li> : null}
+                {signedIn ? <li><a className="sign-out-a"><button className="sign-out-button" onClick={onHandleSignOut}><i className="material-icons delivery-icon">exit_to_app</i></button></a></li> : null}
+                {!signedIn ? <li><a href="/register">Register</a></li> : null}
             </ul>
             </div>
         </nav>

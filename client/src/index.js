@@ -26,6 +26,7 @@ import './css/CustomerInfo.css'
 import './css/PizzaMenu.css'
 import './css/ClosestStore.css'
 import './css/Login.css'
+import './css/UserProfile.css'
 import 'materialize-css/dist/css/materialize.min.css';
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) 
@@ -54,7 +55,4 @@ ReactDOM.render(
 
     , document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
