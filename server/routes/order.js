@@ -65,8 +65,6 @@ router.post('/add-order', async (req, res) => {
     )
     order.StoreOrderID = order.StoreID
 
-    console.log(order)
-
     //checks to see if the order will go through
     order.validate(
         function(result) {
@@ -78,8 +76,8 @@ router.post('/add-order', async (req, res) => {
     //see the price of the order without placing it
     order.price(
         function(result) {
-            //console.log("*********************************** Price ************************************")
-            //console.log(util.inspect(result, false, null, true))
+            console.log("*********************************** Price ************************************")
+            console.log(util.inspect(result, false, null, true))
         }
     )
 
