@@ -16,6 +16,7 @@ import FullMenu from './components/FullMenu'
 import Register from './components/Register'
 import Login from './components/Login'
 import UserProfile from './components/UserProfile'
+import OrderSuccess from './components/OrderSuccess'
 import requireAuth from './components/requireAuth'
 
 // CSS IMPORTS
@@ -27,6 +28,7 @@ import './css/PizzaMenu.css'
 import './css/ClosestStore.css'
 import './css/Login.css'
 import './css/UserProfile.css'
+import './css/OrderSuccess.css'
 import 'materialize-css/dist/css/materialize.min.css';
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) 
@@ -48,6 +50,7 @@ ReactDOM.render(
                         <Route exact path='/register' component = {Register} />
                         <Route exact path='/order-details' component = {CustomerInfo} />
                         <Route exact path='/full-menu' component = {FullMenu} />
+                        <Route exact path='/order-success' component = {OrderSuccess} />
                         <Route exact path='/your-profile' component = {requireAuth(UserProfile)} />
                     </Switch>
                 </BrowserRouter>

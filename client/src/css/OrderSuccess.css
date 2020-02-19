@@ -1,0 +1,12 @@
+.faq-div {
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.faq-div li{
+    font-size: 2rem;
+}
+
+.home-button {
+    text-align: center;
+}

@@ -21,13 +21,12 @@ function ClosestStore(props) {
                 return(<>
                 
                 <div>
-                    <p>Store #: {json.Stores[key].StoreID}</p>
-                    <p>Address: {json.Stores[key].AddressDescription}</p>
-                    <p>Phone: {json.Stores[key].Phone}</p>
-                    <p>---------------</p>
+                    <p><span><b>Store #</b></span>: {json.Stores[key].StoreID}</p>
+                    <p><span><b>Address</b></span>: {json.Stores[key].AddressDescription}</p>
+                    <p><span><b>Phone</b></span>: {json.Stores[key].Phone}</p>
                     <div className="step-2-div">
                         <h4>Step 2: Choose what you want from the menu</h4>
-                        <button onClick={() => props.getStoreID(storeId)}>See the menu</button>
+                        <button className="open-menu-button purple" onClick={() => props.getStoreID(storeId)}><i className="material-icons carryout-icon small">arrow_downward</i></button>
                     </div>
                 </div>
                 

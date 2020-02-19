@@ -3,3 +3,12 @@
     margin-top: 0.3rem;
     margin-bottom: 0.3rem;
 }
+
+.open-menu-button {
+    background-color: none;
+    border: none;
+}
+
+.open-menu-button:hover {
+    color: burlywood;
+}

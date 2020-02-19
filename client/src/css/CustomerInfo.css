@@ -48,3 +48,27 @@
     background-color: rgb(183, 203, 204);
 }
 
+.step-divs {
+    border:  1px solid black;
+    padding: 1rem;
+}
+
+.place-order-button {
+    color: inherit;
+    cursor: pointer
+}
+
+.place-order-button:hover {
+    color: burlywood;
+}
+
+.place-order-button-div {
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.place-order-text {
+    margin-top: 0.5rem;
+}
+
