@@ -23,14 +23,14 @@ function Navbar(props) {
                 {!signedIn ? <li><a href="/login">login</a></li> : null}
                 {signedIn ? <li><a href="/your-profile"><i className="material-icons carryout-icon">account_circle</i></a></li> : null}
                 {signedIn ? <li><a className="sign-out-a"><button className="sign-out-button" onClick={onHandleSignOut}><i className="material-icons delivery-icon">exit_to_app</i></button></a></li> : null}
-                {!signedIn ? <li><a href="/register">Register</a></li> : null}
+                {!signedIn ? <li><a href="/register">register</a></li> : null}
             </ul>
             </div>
         </nav>
         <ul className="sidenav" id="mobile-demo">
             <li><a href="/">Home</a></li>
-            {!signedIn ? <li><a href="/login">login</a></li> : null}
-            {signedIn ? <li><a href="/log-out">sign out</a></li> : null}
+            {!signedIn ? <li><a href="/login">Login</a></li> : null}
+            {signedIn ? <li><a href="/log-out">Sign out</a></li> : null}
             {!signedIn ? <li><a href="/register">Register</a></li> : null}
             {signedIn ? <li><a href="/your-profile">Your Pizza Profile</a></li> : null}
         </ul>

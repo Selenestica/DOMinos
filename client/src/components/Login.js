@@ -42,9 +42,9 @@ function Login(props) {
                 <h1>Welcome back!</h1>
                 <input onChange={handleChange} type="text" name="email" placeholder="email" />
                 <input onChange={handleChange} type="password" name="password" placeholder="password" />
-                <a onClick={onHandleLogin} className="purple login-button-div">
+                <a onClick={onHandleLogin} className="green login-button-div">
                     <div className="button-as">
-                        <div id="delivery-button-div" className="purple">
+                        <div id="delivery-button-div" className="green">
                             <div>
                                 <i className="material-icons delivery-icon">directions_run</i>
                                 <h1 className="button-h1s">Login</h1>
@@ -53,11 +53,10 @@ function Login(props) {
                     </div>
                 </a>
 
-                <h4>Don't have an account?</h4>
-                <h1 className="join-us">Join Us</h1>
+                <h5 className="no-account-h4">Don't have an account?</h5>
                 <a className="login-page-links" href="/register">
                     <div className="button-as">
-                        <div id="carryout-button-div" className="green">
+                        <div id="carryout-button-div" className="purple">
                             <div>
                                 <i className="material-icons carryout-icon">person_add</i>
                                 <h1 className="button-h1s">Register</h1>

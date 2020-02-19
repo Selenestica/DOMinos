@@ -26,21 +26,24 @@ function Register() {
     return(<>
     
         <div className="row container">
-            <div className="col s12 m12 l8 offset-l3 register-col-div">
-                <div className="">
-                    <p>Contact Info</p>
-                    <input type="text" onChange={handleChange} required name="firstName" placeholder="first name" />
-                    <input type="text" onChange={handleChange} required name="lastName" placeholder="last name" />
-                    <input type="email" onChange={handleChange} required name="email" placeholder="email" />
-                    <input type="text" onChange={handleChange} required name="phone" placeholder="phone number" />
-                    <input type="password" onChange={handleChange} required name="password" placeholder="choose a password" />
-                </div>
-                <div className="">
-                    <p>Address</p>
-                    <input type="text" onChange={handleChange} required name="street" placeholder="street" />
-                    <input type="text" onChange={handleChange} required name="city" placeholder="city" />
-                    <input type="text" onChange={handleChange} required name="state" placeholder="state" />
-                    <input type="text" onChange={handleChange} required name="zip" placeholder="zip code" />
+            <div className="col s12 m12 l8 offset-l3">
+                
+                <div className="register-col-div">
+                    <div>
+                        <p className="p-titles">Contact Info</p>
+                        <input type="text" onChange={handleChange} required name="firstName" placeholder="first name" />
+                        <input type="text" onChange={handleChange} required name="lastName" placeholder="last name" />
+                        <input type="email" onChange={handleChange} required name="email" placeholder="email" />
+                        <input type="text" onChange={handleChange} required name="phone" placeholder="phone number" />
+                        <input type="password" onChange={handleChange} required name="password" placeholder="choose a password" />
+                    </div>
+                    <div>
+                        <p className="p-titles">Address</p>
+                        <input type="text" onChange={handleChange} required name="street" placeholder="street" />
+                        <input type="text" onChange={handleChange} required name="city" placeholder="city" />
+                        <input type="text" onChange={handleChange} required name="state" placeholder="state" />
+                        <input type="text" onChange={handleChange} required name="zip" placeholder="zip code" />
+                    </div>
                 </div>
                 <a onClick={onHandleRegisterUser} className="login-page-links">
                     <div className="button-as">
@@ -52,6 +55,7 @@ function Register() {
                         </div>
                     </div>
                 </a>
+                
             </div>
         </div>
     

@@ -33,7 +33,8 @@ function PizzaMenu(props) {
     }, [])
 
     return(<>
-    
+
+        <i className="material-icons carryout-icon large">local_pizza</i>
         <div className="container">
             <div className="row">
                 <div className="col s12">

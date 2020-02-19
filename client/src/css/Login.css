@@ -16,4 +16,10 @@
 .register-col-div {
     border: 1px solid black;
     border-top: none;
+    padding: 1rem;
+    border-bottom: none;
+}
+
+.no-account-h4 {
+    margin-top: 4rem;
 }

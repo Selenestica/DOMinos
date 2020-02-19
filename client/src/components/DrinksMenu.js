@@ -18,13 +18,13 @@ function DrinksMenu(props) {
 
                 let drinkId = json.Products[key].Variants[1]
 
-                return (
+                return (<>
                     <div className="product-div">
-                        <div className="productName"><span><b>{json.Products[key].Name}</b></span></div>
-                        <div>{json.Products[key].Description}</div>
-                        <button onClick={() => props.getDrink(drinkId)} className="product-button green">2L Bottle</button>
+                        <div className="product-name"><b>{json.Products[key].Name}</b></div>
+                        <div>{json.Products[key].Description} 2L Bottle.</div>
+                        <button onClick={() => props.getDrink(drinkId)} className="product-button green">Add to order</button>
                     </div>
-                )
+                </>)
                 }
             })
 
@@ -34,6 +34,7 @@ function DrinksMenu(props) {
 
     return(<>
     
+        <i className="material-icons carryout-icon large">local_cafe</i>
         <div className="container">
             <div className="row">
                 <div className="col s12">
