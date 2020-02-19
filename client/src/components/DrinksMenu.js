@@ -19,9 +19,10 @@ function DrinksMenu(props) {
                 let drinkId = json.Products[key].Variants[1]
 
                 return (
-                    <div>
-                        <li className="productName" id={key}>{json.Products[key].Name}</li>
-                        <button onClick={() => props.getDrink(drinkId)} className="productButton">2L Bottle</button>
+                    <div className="product-div">
+                        <div className="productName"><span><b>{json.Products[key].Name}</b></span></div>
+                        <div>{json.Products[key].Description}</div>
+                        <button onClick={() => props.getDrink(drinkId)} className="product-button green">2L Bottle</button>
                     </div>
                 )
                 }
