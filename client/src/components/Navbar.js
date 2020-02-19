@@ -11,7 +11,6 @@ function Navbar(props) {
         console.log(localStorage.getItem('jsonwebtoken'))
         localStorage.removeItem('jsonwebtoken')
         props.signOut(token)
-
     }
 
     return(<>

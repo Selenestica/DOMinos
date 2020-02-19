@@ -6,7 +6,7 @@ function App() {
     <>
     <div className="container app-container">
       <h1>DOMino's</h1>
-      <h4>The world's first open source Domino's delivery app!</h4>
+      <h4>An open source pizza delivery app</h4>
       <div className="row buttons-row">
           <a className="button-as" href="/order-details">
             <div id="carryout-button-div" className="col l6 s12 m12 green">

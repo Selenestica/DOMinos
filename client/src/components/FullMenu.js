@@ -14,7 +14,7 @@ function FullMenu() {
                 if (json.Products[key].ProductType === "Drinks" || json.Products[key].ProductType === "Pizza")
                 return (
                     <div className="item-div yellow lighten-4">
-                        <li id={key}>{json.Products[key].Name}</li>
+                        <div id={key}><b>{json.Products[key].Name}</b></div>
                         <div>{json.Products[key].Description}</div>
                     </div>
                 )
@@ -28,8 +28,13 @@ function FullMenu() {
     
         <div className="container">
             <div className="row">
-                <div className="col s12">
+                <div className="col s12 l8 offset-l3 m12">
                     {menuData}
+                    <p>
+                        * This is Domino's national menu. 
+                        To see the menu of the store in your area, complete steps 1 and 2 of the order process. Cheers!
+                        This app currently only supports the ordering of pizza and drinks. More to come soon!
+                    </p>
                 </div>
             </div>
         </div>

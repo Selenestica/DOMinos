@@ -95,8 +95,7 @@ router.post('/add-order', async (req, res) => {
 
     order.Payments.push(cardInfo)
 
-    /* ---------------------------------------------------------------------
-    //places the order
+    /*//places the order
     order.place(
         function(result) {
             console.log("*********************************** Order Placed! ************************************")

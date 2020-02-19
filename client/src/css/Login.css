@@ -1,11 +1,19 @@
 .login-page-links {
-    color: inherit
+    color: inherit;
+    cursor: pointer;
 }
 
 .login-button-div {
     margin-bottom: 3rem;
+    color: inherit;
+    cursor: pointer
 }
 
 .join-us {
     margin-top: 1rem;
+}
+
+.register-col-div {
+    border: 1px solid black;
+    border-top: none;
 }
