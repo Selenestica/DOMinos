@@ -20,7 +20,7 @@ function PizzaMenu(props) {
 
                 return (
                     <div>
-                        <li className="productName" id={key}>{json.Products[key].Name}</li>
+                        <li className="productName">{json.Products[key].Name}</li>
                         <button onClick={() => props.getPizza(pizzaId)} name="code" className="pizza-size-button">Add to order</button>
                     </div>
                 )
