@@ -93,15 +93,16 @@ router.post('/add-order', async (req, res) => {
 
     order.Payments.push(cardInfo)
 
-    /*
+    
     //places the order
+    /*
     order.place(
         function(result) {
             console.log("*********************************** Order Placed! ************************************")
             console.log(util.inspect(result, false, null, true))
         }
     )
-    */
+*/
 
 })
 
