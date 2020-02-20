@@ -48,6 +48,8 @@ router.post('/add-order', async (req, res) => {
     //    )    
     //}
 
+    //or create an array with redux, send it to server, and iterate through that array like above
+
     order.addItem(
         new pizzaapi.Item({
             code: req.body.itemCode,
