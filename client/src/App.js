@@ -5,7 +5,7 @@ function App() {
   return (
     <>
     <div className="container app-container">
-      <h1>DOMino's</h1>
+      <h1 className="desktop-title-h1">DOMino's</h1>
       <h4>An open source pizza delivery app</h4>
       <div className="row buttons-row">
           <a className="button-as" href="/order-details">

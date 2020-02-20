@@ -27,7 +27,7 @@ function Register() {
     
         <div className="row container">
             <div className="col s12 m12 l8 offset-l3">
-                
+                <h1>Sign up for pizza</h1>
                 <div className="register-col-div">
                     <div>
                         <p className="p-titles">Contact Info</p>
