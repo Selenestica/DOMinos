@@ -3,8 +3,8 @@ const initialState = {
     addressNotNull: false,  
     storeId: '',
     storeIdNotNull: false,
-    pizzaId: '',
-    drinkId: '',
+    pizzaId: [],
+    drinkId: [],
     isAuthenticated: false,
     token: '',
     userEmail: ''
@@ -31,14 +31,14 @@ const reducer = (state = initialState, action) => {
     else if (action.type === 'SAVE_PIZZA') {
         return {
             ...state,
-            pizzaId: action.pizzaId
+            pizzaId: state.pizzaId.concat(action.pizzaId)
         }
     }
 
     else if (action.type === 'SAVE_DRINK') {
         return {
             ...state,
-            drinkId: action.drinkId
+            drinkId: state.drinkId.concat(action.drinkId)
         }
     }
 

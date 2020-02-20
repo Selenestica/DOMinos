@@ -71,13 +71,13 @@ function CustomerInfo(props) {
                         <div>
                             <div className="step-divs">
                                 <DrinksMenu />
-                                <p className="p-titles">Quantity:</p>
-                                <input required type="number" placeholder="how many drinks?" name="drinkQuantity" onChange={handleChange} />
+                                <i className="material-icons carryout-icon small">shopping_cart</i>
+                                <p>{props.drinkId}</p>
                             </div>
                             <div className="step-divs">
                                 <PizzaMenu />
-                                <p className="p-titles">Quantity:</p>
-                                <input required type="number" placeholder="how many pizzas?" name="quantity" onChange={handleChange} />
+                                <i className="material-icons carryout-icon small">shopping_cart</i>
+                                <p>{props.pizzaId}</p>
                             </div>
                         </div>
                     </div> : null}

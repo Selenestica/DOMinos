@@ -36,27 +36,16 @@ router.post('/add-order', async (req, res) => {
     })
     order.StoreID = myStore.ID
 
-    //maybe store every item in localstorage, then when the order is placed do something like
-    // itemArray = []
-    // for (item in itemArray) {
-    //    order.addItem(
-        //    new pizzaapi.Item({
-        //        code: req.body.item,
-        //        options: [],
-        //        quantity: req.body.quantity
-        //    })   
-    //    )    
-    //}
-
-    //or create an array with redux, send it to server, and iterate through that array like above
-
-    order.addItem(
-        new pizzaapi.Item({
-            code: req.body.itemCode,
-            options: [],
-            quantity: req.body.quantity
-        })
-    )
+    itemArray = req.body.itemCode
+    for (item = 0; item < itemArray.length; item ++) {
+        order.addItem(
+            new pizzaapi.Item({
+                code: itemArray[item],
+                options: [],
+                quantity: 1
+            })
+        )
+    }
 
     order.addItem(
         new pizzaapi.Item({
