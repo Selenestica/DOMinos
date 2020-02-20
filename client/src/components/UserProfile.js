@@ -18,25 +18,17 @@ function UserProfile() {
                 const lastName = Object.values(json.lastName)
                 const email = Object.values(json.email)
                 const phone = Object.values(json.phone)
+                const delivery_address = Object.values(json.pastOrders.delivery_address)
 
                 return (<>
-
-                        <div className="row">
-                            <div className="col blue lighten-5">
-                                <div>
-                                    <p>Address: {address}</p>
-                                </div>
-                                <div>
-                                    <p>Name: {firstName} {lastName}</p>   
-                                </div>
-                                <div>
-                                    <p>Email: {email}</p>  
-                                </div>
-                                <div>
-                                    <p>Phone: {phone}</p>  
-                                </div>
-                            </div>
-                        </div>
+                                
+                        <p className="p-titles">Your contact information</p>
+                        <p><b>Address:</b> {address}</p>
+                        <p><b>Name:</b> {firstName} {lastName}</p>   
+                        <p><b>Email:</b> {email}</p>  
+                        <p><b>Phone:</b> {phone}</p>  
+                        <p><b>Your last delivery address:</b> {delivery_address}</p>
+                        <p className="p-titles">Your order history</p>
                 
                 </>)
             }
@@ -47,10 +39,15 @@ function UserProfile() {
     return(<>
     
         <div className="container">
+            <div className="row">
+                <div className="col l10 offset-l1 s12 m12 pizza-profile-div">
+                    <div className="profile-h4-div">
+                        <h4>Your Pizza Profile</h4>
+                    </div>
+                    {userInfo}
 
-            <h1>Your Pizza Profile</h1>
-            {userInfo}
-
+                </div>
+            </div>
         </div>
     
     </>)
