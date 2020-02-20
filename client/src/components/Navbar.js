@@ -8,7 +8,6 @@ function Navbar(props) {
     const onHandleSignOut = () => {
 
         const token = localStorage.getItem('jsonwebtoken')
-        console.log(localStorage.getItem('jsonwebtoken'))
         localStorage.removeItem('jsonwebtoken')
         props.signOut(token)
     }
