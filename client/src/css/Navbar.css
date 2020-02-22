@@ -114,6 +114,10 @@
       box-shadow: none;
   }
 
+  .sign-out-button {
+    padding-left: 0rem;
+  }
+
 }
 
 

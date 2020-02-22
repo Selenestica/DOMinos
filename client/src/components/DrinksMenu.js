@@ -17,12 +17,14 @@ function DrinksMenu(props) {
                 if (json.Products[key].ProductType === "Drinks") {
 
                 let drinkId = json.Products[key].Variants[1]
+                let drinkName = json.Products[key].Name
+                let drinkDescription = json.Products[key].Description
 
                 return (<>
                     <div className="product-div">
-                        <div className="product-name"><b>{json.Products[key].Name}</b></div>
-                        <div>{json.Products[key].Description} 2L Bottle.</div>
-                        <button onClick={() => props.getDrink(drinkId)} className="product-button green">Add to order</button>
+                        <div className="product-name"><b>{drinkName}</b></div>
+                        <div>{drinkDescription} 2L Bottle.</div>
+                        <button onClick={() => props.getDrink(drinkId, drinkName)} className="product-button green">Add to order</button>
                     </div>
                 </>)
                 }
@@ -55,7 +57,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getDrink: (newDrink) => dispatch({type: 'SAVE_DRINK', drinkId: newDrink})
+        getDrink: (newDrink, newDrinkName) => dispatch({type: 'SAVE_DRINK', drinkId: newDrink, drinkName: newDrinkName})
     }
 }
 

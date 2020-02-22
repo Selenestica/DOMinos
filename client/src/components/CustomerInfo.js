@@ -71,13 +71,17 @@ function CustomerInfo(props) {
                         <div>
                             <div className="step-divs">
                                 <DrinksMenu />
-                                <i className="material-icons carryout-icon small">shopping_cart</i>
-                                <p>{props.drinkId}</p>
+                                <div className="items-array-div green lighten-5">
+                                    <p onClick={() => props.clearDrinkOrder()} className="p-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
+                                    <p className="items-array-p"><b>{props.drinkName}</b></p>
+                                </div>
                             </div>
                             <div className="step-divs">
                                 <PizzaMenu />
-                                <i className="material-icons carryout-icon small">shopping_cart</i>
-                                <p>{props.pizzaId}</p>
+                                <div className="items-array-div green lighten-5">
+                                    <p onClick={() => props.clearPizzaOrder()} className="p-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
+                                    <p className="items-array-p"><b>{props.pizzaName}</b></p>
+                                </div>
                             </div>
                         </div>
                     </div> : null}
@@ -121,6 +125,8 @@ function CustomerInfo(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         findStore: (newCustomerAddress) => dispatch({type: 'ADDRESS_SAVED', customerAddress: newCustomerAddress}),
+        clearPizzaOrder: () => dispatch({type: 'CLEAR_PIZZA_ORDER'}),
+        clearDrinkOrder: () => dispatch({type: 'CLEAR_DRINK_ORDER'})
     }
 }
 
@@ -130,7 +136,9 @@ const mapStateToProps = (state) => {
         storeIdNotNull: state.storeIdNotNull,
         storeId: state.storeId,
         pizzaId: state.pizzaId,
-        drinkId: state.drinkId
+        pizzaName: state.pizzaName,
+        drinkId: state.drinkId,
+        drinkName: state.drinkName
     }
 }
 

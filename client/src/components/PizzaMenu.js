@@ -17,12 +17,14 @@ function PizzaMenu(props) {
                 if (json.Products[key].ProductType === "Pizza") {
 
                 let pizzaId = json.Products[key].Variants[4]
+                let pizzaName = json.Products[key].Name
+                let pizzaDescription = json.Products[key].Description
 
                 return (
                     <div className="product-div">
-                        <div className="product-name"><b>{json.Products[key].Name}</b></div>
-                        <div>{json.Products[key].Description}</div>
-                        <button onClick={() => props.getPizza(pizzaId)} name="code" className="pizza-size-button green">Add to order</button>
+                        <div className="product-name"><b>{pizzaName}</b></div>
+                        <div>{pizzaDescription}</div>
+                        <button onClick={() => props.getPizza(pizzaId, pizzaName)} name="code" className="pizza-size-button green">Add to order</button>
                     </div>
                 )
                 }
@@ -55,7 +57,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getPizza: (newPizzaId) => dispatch({type: 'SAVE_PIZZA', pizzaId: newPizzaId})
+        getPizza: (newPizzaId, newPizzaName) => dispatch({type: 'SAVE_PIZZA', pizzaId: newPizzaId, pizzaName: newPizzaName})
     }
 }
 

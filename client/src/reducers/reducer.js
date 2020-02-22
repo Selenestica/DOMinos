@@ -4,7 +4,9 @@ const initialState = {
     storeId: '',
     storeIdNotNull: false,
     pizzaId: [],
+    pizzaName: [],
     drinkId: [],
+    drinkName: [],
     isAuthenticated: false,
     token: '',
     userEmail: ''
@@ -31,14 +33,30 @@ const reducer = (state = initialState, action) => {
     else if (action.type === 'SAVE_PIZZA') {
         return {
             ...state,
-            pizzaId: state.pizzaId.concat(action.pizzaId)
+            pizzaId: state.pizzaId.concat(action.pizzaId),
+            pizzaName: state.pizzaName.concat(action.pizzaName + ' ')
+        }
+    }
+
+    else if (action.type === 'CLEAR_PIZZA_ORDER') {
+        return {
+            ...state,
+            pizzaName: []
         }
     }
 
     else if (action.type === 'SAVE_DRINK') {
         return {
             ...state,
-            drinkId: state.drinkId.concat(action.drinkId)
+            drinkId: state.drinkId.concat(action.drinkId),
+            drinkName: state.drinkName.concat(action.drinkName + ' ')
+        }
+    }
+
+    else if (action.type === 'CLEAR_DRINK_ORDER') {
+        return {
+            ...state,
+            drinkName: []
         }
     }
 
