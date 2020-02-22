@@ -55,17 +55,17 @@
 
 .place-order-button {
     color: inherit;
-    cursor: pointer
-}
-
-.place-order-button:hover {
-    color: burlywood;
 }
 
 .place-order-button-div {
     text-align: center;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+
+.place-order-button-div:hover {
+    color: burlywood;
+    cursor: pointer;
 }
 
 .place-order-text {

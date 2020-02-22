@@ -109,8 +109,8 @@ function CustomerInfo(props) {
                             <input type="text" onChange={handleChange} name="securityCode" placeholder="security code" />
                             <input type="text" onChange={handleChange} name="cardZip" placeholder="zip code" />
                         </div>
-                        <div className="green place-order-button-div">
-                            <a className="place-order-button" onClick={onHandleSubmitCustomerInfo}><i className="material-icons carryout-icon large">check</i><h1 className="place-order-text">Place order</h1></a>
+                        <div onClick={onHandleSubmitCustomerInfo} className="green place-order-button-div">
+                            <a className="place-order-button"><i className="material-icons carryout-icon large">check</i><h1 className="place-order-text">Place order</h1></a>
                         </div>
                    </div> : null}
                 </div>
