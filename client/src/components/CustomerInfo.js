@@ -72,14 +72,14 @@ function CustomerInfo(props) {
                             <div className="step-divs">
                                 <DrinksMenu />
                                 <div className="items-array-div green lighten-5">
-                                    <p onClick={() => props.clearDrinkOrder()} className="p-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
+                                    <p onClick={() => props.clearDrinkOrder()} className="p-order-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
                                     <p className="items-array-p"><b>{props.drinkName}</b></p>
                                 </div>
                             </div>
                             <div className="step-divs">
                                 <PizzaMenu />
                                 <div className="items-array-div green lighten-5">
-                                    <p onClick={() => props.clearPizzaOrder()} className="p-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
+                                    <p onClick={() => props.clearPizzaOrder()} className="p-order-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
                                     <p className="items-array-p"><b>{props.pizzaName}</b></p>
                                 </div>
                             </div>
