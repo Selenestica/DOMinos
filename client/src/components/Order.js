@@ -4,7 +4,7 @@ import DrinksMenu from './DrinksMenu'
 import PizzaMenu from './PizzaMenu'
 import ClosestStore from './ClosestStore'
 
-function CustomerInfo(props) {
+function Order(props) {
 
     const [customerInfo, setCustomerInfo] = useState({})
 
@@ -13,8 +13,7 @@ function CustomerInfo(props) {
             ...customerInfo,
             [e.target.name]: e.target.value,
             chosenStore: props.storeId,
-            itemCode: props.pizzaId,
-            drinkCode: props.drinkId
+            itemCode: props.itemId
         }) 
     }
 
@@ -35,8 +34,7 @@ function CustomerInfo(props) {
         setCustomerAddress({
             ...customerAddress,
             [e.target.name]: e.target.value
-        }
-        )
+        })
     }
 
     return(<>
@@ -62,8 +60,7 @@ function CustomerInfo(props) {
                         <p className="p-titles">Your Domino's</p>
                         <ClosestStore />
                         <input type="hidden" onChange={handleChange} name="chosenStore" value={props.storeId} />
-                        <input type="hidden" onChange={handleChange} name="itemCode" value={props.pizzaId} />
-                        <input type="hidden" onChange={handleChange} name="drinkCode" value={props.drinkId} />
+                        <input type="hidden" onChange={handleChange} name="itemCode" value={props.itemId} />
                         <input type="hidden" onChange={handleChange} name="chosenDeliveryMethod" value="Delivery" />
                     </div> : null}
 
@@ -71,16 +68,12 @@ function CustomerInfo(props) {
                         <div>
                             <div className="step-divs">
                                 <DrinksMenu />
-                                <div className="items-array-div green lighten-5">
-                                    <p onClick={() => props.clearDrinkOrder()} className="p-order-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
-                                    <p className="items-array-p"><b>{props.drinkName}</b></p>
-                                </div>
                             </div>
                             <div className="step-divs">
                                 <PizzaMenu />
                                 <div className="items-array-div green lighten-5">
-                                    <p onClick={() => props.clearPizzaOrder()} className="p-order-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
-                                    <p className="items-array-p"><b>{props.pizzaName}</b></p>
+                                    <p onClick={() => props.clearOrder()} className="p-order-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
+                                    <p className="items-array-p"><b>{props.itemName}</b></p>
                                 </div>
                             </div>
                         </div>
@@ -125,8 +118,7 @@ function CustomerInfo(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         findStore: (newCustomerAddress) => dispatch({type: 'ADDRESS_SAVED', customerAddress: newCustomerAddress}),
-        clearPizzaOrder: () => dispatch({type: 'CLEAR_PIZZA_ORDER'}),
-        clearDrinkOrder: () => dispatch({type: 'CLEAR_DRINK_ORDER'})
+        clearOrder: () => dispatch({type: 'CLEAR_ORDER'}),
     }
 }
 
@@ -135,11 +127,9 @@ const mapStateToProps = (state) => {
         addressNotNull: state.addressNotNull,
         storeIdNotNull: state.storeIdNotNull,
         storeId: state.storeId,
-        pizzaId: state.pizzaId,
-        pizzaName: state.pizzaName,
-        drinkId: state.drinkId,
-        drinkName: state.drinkName
+        itemId: state.itemId,
+        itemName: state.itemName,
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomerInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(Order)
