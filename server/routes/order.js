@@ -36,7 +36,7 @@ router.post('/add-order', async (req, res) => {
     })
     order.StoreID = myStore.ID
 
-    itemArray = req.body.itemCode
+    let itemArray = req.body.itemCode
     for (item = 0; item < itemArray.length; item ++) {
         order.addItem(
             new pizzaapi.Item({
@@ -47,16 +47,6 @@ router.post('/add-order', async (req, res) => {
         )
     }
 
-    drinkArray = req.body.drinkCode
-    for (drink = 0; drink < drinkArray.length; drink ++) {
-        order.addItem(
-            new pizzaapi.Item({
-                code: drinkArray[drink],
-                options: [],
-                quantity: 1
-            })
-        )
-    }
     order.StoreOrderID = order.StoreID
 
     //checks to see if the order will go through
