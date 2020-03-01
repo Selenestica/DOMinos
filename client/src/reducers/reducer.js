@@ -1,3 +1,5 @@
+import { stat } from "fs"
+
 const initialState = {
     customerAddress: '',
     addressNotNull: false,  
@@ -69,114 +71,122 @@ const reducer = (state = initialState, action) => {
     }
 
     else if (action.type === 'OPEN_DRINKS_MENU') {
-        return {
-            ...state,
-            drinksMenuOpen: true
+        if (state.drinksMenuOpen === false) {
+            return {
+                ...state,
+                drinksMenuOpen: true
+            }
         }
-    }
-
-    else if (action.type === 'CLOSE_DRINKS_MENU') {
-        return {
-            ...state,
-            drinksMenuOpen: false
+        else {
+            return {
+                ...state,
+                drinksMenuOpen: false
+            }
         }
     }
 
     else if (action.type === 'OPEN_PIZZA_MENU') {
-        return {
-            ...state,
-            pizzaMenuOpen: true
+        if (state.pizzaMenuOpen === false) {
+            return {
+                ...state,
+                pizzaMenuOpen: true
+            }
         }
-    }
-
-    else if (action.type === 'CLOSE_PIZZA_MENU') {
-        return {
-            ...state,
-            pizzaMenuOpen: false
+        else {
+            return {
+                ...state,
+                pizzaMenuOpen: false
+            }
         }
     }
 
     else if (action.type === 'OPEN_BREAD_MENU') {
-        return {
-            ...state,
-            breadMenuOpen: true
+        if (state.saladMenuOpen === false) {
+            return {
+                ...state,
+                breadMenuOpen: true
+            }
         }
-    }
-
-    else if (action.type === 'CLOSE_BREAD_MENU') {
-        return {
-            ...state,
-            breadMenuOpen: false
+        else {
+            return {
+                ...state,
+                breadMenuOpen: false
+            }
         }
     }
 
     else if (action.type === 'OPEN_DESSERT_MENU') {
-        return {
-            ...state,
-            dessertMenuOpen: true
+        if (state.dessertMenuOpen === false) {
+            return {
+                ...state,
+                dessertMenuOpen: true
+            }
         }
-    }
-
-    else if (action.type === 'CLOSE_DESSERT_MENU') {
-        return {
-            ...state,
-            dessertMenuOpen: false
+        else {
+            return {
+                ...state,
+                dessertMenuOpen: false
+            }
         }
     }
 
     else if (action.type === 'OPEN_PASTA_MENU') {
-        return {
-            ...state,
-            pastaMenuOpen: true
+        if (state.pastaMenuOpen === false) {
+            return {
+                ...state,
+                pastaMenuOpen: true
+            }
         }
-    }
-
-    else if (action.type === 'CLOSE_PASTA_MENU') {
-        return {
-            ...state,
-            pastaMenuOpen: false
+        else {
+            return {
+                ...state,
+                pastaMenuOpen: false
+            }
         }
     }
 
     else if (action.type === 'OPEN_SANDWICH_MENU') {
-        return {
-            ...state,
-            sandwichMenuOpen: true
+        if (state.sandwichMenuOpen === false) {
+            return {
+                ...state,
+                sandwichMenuOpen: true
+            }
         }
-    }
-
-    else if (action.type === 'CLOSE_SANDWICH_MENU') {
-        return {
-            ...state,
-            sandwichMenuOpen: false
+        else {
+            return{
+                ...state,
+                sandwichMenuOpen: false
+            }
         }
     }
 
     else if (action.type === 'OPEN_SALAD_MENU') {
-        return {
-            ...state,
-            saladMenuOpen: true
+        if (state.saladMenuOpen === false) {
+            return {
+                ...state,
+                saladMenuOpen: true
+            }
         }
-    }
-
-    else if (action.type === 'CLOSE_SALAD_MENU') {
-        return {
-            ...state,
-            saladMenuOpen: false
+        else {
+            return {
+                ...state,
+                saladMenuOpen: false
+            }
         }
     }
 
     else if (action.type === 'OPEN_WINGS_MENU') {
-        return {
-            ...state,
-            wingsMenuOpen: true
+        if (state.wingsMenuOpen === false) {
+            return {
+                ...state,
+                wingsMenuOpen: true
+            }
         }
-    }
-
-    else if (action.type === 'CLOSE_WINGS_MENU') {
-        return {
-            ...state,
-            wingsMenuOpen: false
+        else {
+            return {
+                ...state,
+                wingsMenuOpen: false
+            }
         }
     }
 

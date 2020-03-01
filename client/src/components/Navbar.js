@@ -20,7 +20,7 @@ function Navbar(props) {
             <a href="/" className="brand-logo black-text">DOMino's</a>
             <a href="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down navbar-ul">
-                <li className="full-menu-link"><a href="full-menu">menu</a></li>
+                <li><a href="/order-details"><i className="material-icons burger-menu-icons">local_pizza</i></a></li>
                 {!signedIn ? <li><a href="/login">login</a></li> : null}
                 {signedIn ? <li><a href="/your-profile"><i className="material-icons carryout-icon">account_circle</i></a></li> : null}
                 {signedIn ? <li><a className="sign-out-a"><button className="sign-out-button" onClick={onHandleSignOut}><i className="material-icons delivery-icon">exit_to_app</i></button></a></li> : null}
@@ -33,7 +33,7 @@ function Navbar(props) {
             <div>
                 <Menu>
                     <li><a href="/"><i className="material-icons burger-menu-icons">home</i></a></li>
-                    <li><a href="full-menu"><i className="material-icons burger-menu-icons">chrome_reader_mode</i></a></li>
+                    <li><a href="/order-details"><i className="material-icons burger-menu-icons">local_pizza</i></a></li>
                     {!signedIn ? <li><a href="/login">login</a></li> : null}
                     {signedIn ? <li><a href="/your-profile"><i className="material-icons burger-menu-icons">account_circle</i></a></li> : null}
                     {signedIn ? <li><a className="sign-out-a"><button className="sign-out-button" onClick={onHandleSignOut}><i className="material-icons burger-menu-icons">exit_to_app</i></button></a></li> : null}

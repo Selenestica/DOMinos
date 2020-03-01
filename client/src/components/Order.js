@@ -48,12 +48,12 @@ function Order(props) {
                 <div className="col l10 offset-l1 s12 m12">
                     <h4>Step 1: Find the Domino's nearest to you</h4>
                     <div className="step-divs">
-                        <p className="p-titles">Where are you?</p>
+                        <p className="p-titles">Your address</p>
                         <input type="text" onChange={handleChange} name="street" placeholder="street" />
                         <input type="text" onChange={handleChange} name="city" placeholder="city" />
                         <input type="text" onChange={handleChange} name="state" placeholder="state" />
                         <input type="text" onChange={handleChange} name="zip" placeholder="zip code" />
-                        <button className="open-menu-button purple" onClick={() => props.findStore(customerInfo)}><i className="material-icons carryout-icon small">search</i></button>
+                        <button className="open-menu-button green" onClick={() => props.findStore(customerInfo)}><i className="material-icons carryout-icon small">search</i></button>
                     </div>
                     {props.addressNotNull ? <div className="step-divs">
                         <p className="p-titles">Your Domino's</p>
@@ -66,13 +66,8 @@ function Order(props) {
                     {props.storeIdNotNull ? <div>
                         <div>
 
-                        <div className="row menu-toggle-row">
-                                <div className="col">
-                                    <h5 className="menu-open-buttons" onClick={() => props.openPizzaMenu()}><u>Pizzas</u></h5>
-                                </div>
-                                <div className="col">
-                                    {props.pizzaMenuOpen ? <i onClick={() => props.closePizzaMenu()} className="material-icons close-menu-icon">clear</i> : null}
-                                </div>
+                            <div className="row menu-toggle-row">
+                                <h5 className="menu-open-buttons" onClick={() => props.openPizzaMenu()}><u>Pizzas</u></h5>
                             </div>
                             {props.pizzaMenuOpen ? <div>
                                 <div className="step-divs">
@@ -81,12 +76,7 @@ function Order(props) {
                             </div> : null}
 
                             <div className="row menu-toggle-row">
-                                <div className="col">
-                                    <h5 className="menu-open-buttons" onClick={() => props.openDrinksMenu()}><u>Drinks</u></h5>
-                                </div>
-                                <div className="col">
-                                    {props.drinksMenuOpen ? <i onClick={() => props.closeDrinksMenu()} className="material-icons close-menu-icon">clear</i> : null}
-                                </div>
+                                <h5 className="menu-open-buttons" onClick={() => props.openDrinksMenu()}><u>Drinks</u></h5>
                             </div>
                             {props.drinksMenuOpen ? <div>
                                 <div className="step-divs">
@@ -95,12 +85,7 @@ function Order(props) {
                             </div> : null}
 
                             <div className="row menu-toggle-row">
-                                <div className="col">
-                                    <h5 className="menu-open-buttons" onClick={() => props.openBreadMenu()}><u>Bread</u></h5>
-                                </div>
-                                <div className="col">
-                                    {props.breadMenuOpen ? <i onClick={() => props.closeBreadMenu()} className="material-icons close-menu-icon">clear</i> : null}
-                                </div>
+                                <h5 className="menu-open-buttons" onClick={() => props.openBreadMenu()}><u>Bread</u></h5>
                             </div>
                             {props.breadMenuOpen ? <div>
                                 <div className="step-divs">
@@ -109,12 +94,7 @@ function Order(props) {
                             </div> : null}
 
                             <div className="row menu-toggle-row">
-                                <div className="col">
-                                    <h5 className="menu-open-buttons" onClick={() => props.openWingsMenu()}><u>Wings</u></h5>
-                                </div>
-                                <div className="col">
-                                    {props.wingsMenuOpen ? <i onClick={() => props.closeWingsMenu()} className="material-icons close-menu-icon">clear</i> : null}
-                                </div>
+                                <h5 className="menu-open-buttons" onClick={() => props.openWingsMenu()}><u>Wings</u></h5>
                             </div>
                             {props.wingsMenuOpen ? <div>
                                 <div className="step-divs">
@@ -123,12 +103,7 @@ function Order(props) {
                             </div> : null}
 
                             <div className="row menu-toggle-row">
-                                <div className="col">
-                                    <h5 className="menu-open-buttons" onClick={() => props.openSandwichMenu()}><u>Sandwiches</u></h5>
-                                </div>
-                                <div className="col">
-                                    {props.sandwichMenuOpen ? <i onClick={() => props.closeSandwichMenu()} className="material-icons close-menu-icon">clear</i> : null}
-                                </div>
+                                <h5 className="menu-open-buttons" onClick={() => props.openSandwichMenu()}><u>Sandwiches</u></h5>
                             </div>
                             {props.sandwichMenuOpen ? <div>
                                 <div className="step-divs">
@@ -137,12 +112,7 @@ function Order(props) {
                             </div> : null}
 
                             <div className="row menu-toggle-row">
-                                <div className="col">
-                                    <h5 className="menu-open-buttons" onClick={() => props.openPastaMenu()}><u>Pasta</u></h5>
-                                </div>
-                                <div className="col">
-                                    {props.pastaMenuOpen ? <i onClick={() => props.closePastaMenu()} className="material-icons close-menu-icon">clear</i> : null}
-                                </div>
+                                <h5 className="menu-open-buttons" onClick={() => props.openPastaMenu()}><u>Pasta</u></h5>
                             </div>
                             {props.pastaMenuOpen ? <div>
                                 <div className="step-divs">
@@ -151,12 +121,7 @@ function Order(props) {
                             </div> : null}
 
                             <div className="row menu-toggle-row">
-                                <div className="col">
-                                    <h5 className="menu-open-buttons" onClick={() => props.openDessertMenu()}><u>Dessert</u></h5>
-                                </div>
-                                <div className="col">
-                                    {props.dessertMenuOpen ? <i onClick={() => props.closeDessertMenu()} className="material-icons close-menu-icon">clear</i> : null}
-                                </div>
+                                <h5 className="menu-open-buttons" onClick={() => props.openDessertMenu()}><u>Dessert</u></h5>
                             </div>
                             {props.dessertMenuOpen ? <div>
                                 <div className="step-divs">
@@ -165,12 +130,7 @@ function Order(props) {
                             </div> : null}
 
                             <div className="row menu-toggle-row">
-                                <div className="col">
-                                    <h5 className="menu-open-buttons" onClick={() => props.openSaladMenu()}><u>Salads</u></h5>
-                                </div>
-                                <div className="col">
-                                    {props.saladMenuOpen ? <i onClick={() => props.closeSaladMenu()} className="material-icons close-menu-icon">clear</i> : null}
-                                </div>
+                                <h5 className="menu-open-buttons" onClick={() => props.openSaladMenu()}><u>Salads</u></h5>
                             </div>
                             {props.saladMenuOpen ? <div>
                                 <div className="step-divs">
