@@ -12,7 +12,6 @@ import { setAuthenticationHeader } from './utils/authentication';
 import App from './App';
 import Navbar from './components/Navbar'
 import Order from './components/Order'
-import FullMenu from './components/FullMenu'
 import Register from './components/Register'
 import Login from './components/Login'
 import UserProfile from './components/UserProfile'
@@ -22,7 +21,6 @@ import requireAuth from './components/requireAuth'
 // CSS IMPORTS
 import './css/index.css'
 import './css/Navbar.css'
-import './css/FullMenu.css'
 import './css/Order.css'
 import './css/PizzaMenu.css'
 import './css/ClosestStore.css'
@@ -50,7 +48,6 @@ ReactDOM.render(
                         <Route exact path='/login' component = {Login} />
                         <Route exact path='/register' component = {Register} />
                         <Route exact path='/order-details' component = {Order} />
-                        <Route exact path='/full-menu' component = {FullMenu} />
                         <Route exact path='/order-success' component = {OrderSuccess} />
                         <Route exact path='/your-profile' component = {requireAuth(UserProfile)} />
                     </Switch>

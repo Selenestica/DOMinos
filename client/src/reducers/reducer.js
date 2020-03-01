@@ -7,7 +7,15 @@ const initialState = {
     itemName: [],
     isAuthenticated: false,
     token: '',
-    userEmail: ''
+    userEmail: '',
+    drinksMenuOpen: false,
+    pizzaMenuOpen: false,
+    breadMenuOpen: false,
+    dessertMenuOpen: false,
+    pastaMenuOpen: false,
+    saladMenuOpen: false,
+    sandwichMenuOpen: false,
+    wingsMenuOpen: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -32,7 +40,7 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             itemId: state.itemId.concat(action.itemId),
-            itemName: state.itemName.concat(action.itemName + ' ')
+            itemName: state.itemName.concat(action.itemName + ', ')
         }
     }
 
@@ -57,6 +65,118 @@ const reducer = (state = initialState, action) => {
             ...state,
             isAuthenticated: false,
             token: ''
+        }
+    }
+
+    else if (action.type === 'OPEN_DRINKS_MENU') {
+        return {
+            ...state,
+            drinksMenuOpen: true
+        }
+    }
+
+    else if (action.type === 'CLOSE_DRINKS_MENU') {
+        return {
+            ...state,
+            drinksMenuOpen: false
+        }
+    }
+
+    else if (action.type === 'OPEN_PIZZA_MENU') {
+        return {
+            ...state,
+            pizzaMenuOpen: true
+        }
+    }
+
+    else if (action.type === 'CLOSE_PIZZA_MENU') {
+        return {
+            ...state,
+            pizzaMenuOpen: false
+        }
+    }
+
+    else if (action.type === 'OPEN_BREAD_MENU') {
+        return {
+            ...state,
+            breadMenuOpen: true
+        }
+    }
+
+    else if (action.type === 'CLOSE_BREAD_MENU') {
+        return {
+            ...state,
+            breadMenuOpen: false
+        }
+    }
+
+    else if (action.type === 'OPEN_DESSERT_MENU') {
+        return {
+            ...state,
+            dessertMenuOpen: true
+        }
+    }
+
+    else if (action.type === 'CLOSE_DESSERT_MENU') {
+        return {
+            ...state,
+            dessertMenuOpen: false
+        }
+    }
+
+    else if (action.type === 'OPEN_PASTA_MENU') {
+        return {
+            ...state,
+            pastaMenuOpen: true
+        }
+    }
+
+    else if (action.type === 'CLOSE_PASTA_MENU') {
+        return {
+            ...state,
+            pastaMenuOpen: false
+        }
+    }
+
+    else if (action.type === 'OPEN_SANDWICH_MENU') {
+        return {
+            ...state,
+            sandwichMenuOpen: true
+        }
+    }
+
+    else if (action.type === 'CLOSE_SANDWICH_MENU') {
+        return {
+            ...state,
+            sandwichMenuOpen: false
+        }
+    }
+
+    else if (action.type === 'OPEN_SALAD_MENU') {
+        return {
+            ...state,
+            saladMenuOpen: true
+        }
+    }
+
+    else if (action.type === 'CLOSE_SALAD_MENU') {
+        return {
+            ...state,
+            saladMenuOpen: false
+        }
+    }
+
+    else if (action.type === 'OPEN_WINGS_MENU') {
+        return {
+            ...state,
+            wingsMenuOpen: true
+        }
+    }
+
+    else if (action.type === 'CLOSE_WINGS_MENU') {
+        return {
+            ...state,
+            wingsMenuOpen: false
         }
     }
 

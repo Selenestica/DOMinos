@@ -1,7 +1,13 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
-import DrinksMenu from './DrinksMenu'
-import PizzaMenu from './PizzaMenu'
+import DrinksMenu from './menus/DrinksMenu'
+import PizzaMenu from './menus/PizzaMenu'
+import BreadMenu from './menus/BreadMenu'
+import DessertMenu from './menus/DessertMenu'
+import PastaMenu from './menus/PastaMenu'
+import SaladMenu from './menus/SaladMenu'
+import SandwichMenu from './menus/SandwichMenu'
+import WingsMenu from './menus/WingsMenu' 
 import ClosestStore from './ClosestStore'
 
 function Order(props) {
@@ -59,16 +65,124 @@ function Order(props) {
 
                     {props.storeIdNotNull ? <div>
                         <div>
-                            <div className="step-divs">
-                                <DrinksMenu />
-                            </div>
-                            <div className="step-divs">
-                                <PizzaMenu />
-                                <div className="items-array-div green lighten-5">
-                                    <p onClick={() => props.clearOrder()} className="p-order-titles">Your order <i className="material-icons carryout-icon clear-cart-icon">clear</i></p>
-                                    <p className="items-array-p"><b>{props.itemName}</b></p>
+
+                        <div className="row menu-toggle-row">
+                                <div className="col">
+                                    <h5 className="menu-open-buttons" onClick={() => props.openPizzaMenu()}><u>Pizzas</u></h5>
+                                </div>
+                                <div className="col">
+                                    {props.pizzaMenuOpen ? <i onClick={() => props.closePizzaMenu()} className="material-icons close-menu-icon">clear</i> : null}
                                 </div>
                             </div>
+                            {props.pizzaMenuOpen ? <div>
+                                <div className="step-divs">
+                                    <PizzaMenu />
+                                </div>
+                            </div> : null}
+
+                            <div className="row menu-toggle-row">
+                                <div className="col">
+                                    <h5 className="menu-open-buttons" onClick={() => props.openDrinksMenu()}><u>Drinks</u></h5>
+                                </div>
+                                <div className="col">
+                                    {props.drinksMenuOpen ? <i onClick={() => props.closeDrinksMenu()} className="material-icons close-menu-icon">clear</i> : null}
+                                </div>
+                            </div>
+                            {props.drinksMenuOpen ? <div>
+                                <div className="step-divs">
+                                    <DrinksMenu />
+                                </div>
+                            </div> : null}
+
+                            <div className="row menu-toggle-row">
+                                <div className="col">
+                                    <h5 className="menu-open-buttons" onClick={() => props.openBreadMenu()}><u>Bread</u></h5>
+                                </div>
+                                <div className="col">
+                                    {props.breadMenuOpen ? <i onClick={() => props.closeBreadMenu()} className="material-icons close-menu-icon">clear</i> : null}
+                                </div>
+                            </div>
+                            {props.breadMenuOpen ? <div>
+                                <div className="step-divs">
+                                    <BreadMenu />
+                                </div>
+                            </div> : null}
+
+                            <div className="row menu-toggle-row">
+                                <div className="col">
+                                    <h5 className="menu-open-buttons" onClick={() => props.openWingsMenu()}><u>Wings</u></h5>
+                                </div>
+                                <div className="col">
+                                    {props.wingsMenuOpen ? <i onClick={() => props.closeWingsMenu()} className="material-icons close-menu-icon">clear</i> : null}
+                                </div>
+                            </div>
+                            {props.wingsMenuOpen ? <div>
+                                <div className="step-divs">
+                                    <WingsMenu />
+                                </div>
+                            </div> : null}
+
+                            <div className="row menu-toggle-row">
+                                <div className="col">
+                                    <h5 className="menu-open-buttons" onClick={() => props.openSandwichMenu()}><u>Sandwiches</u></h5>
+                                </div>
+                                <div className="col">
+                                    {props.sandwichMenuOpen ? <i onClick={() => props.closeSandwichMenu()} className="material-icons close-menu-icon">clear</i> : null}
+                                </div>
+                            </div>
+                            {props.sandwichMenuOpen ? <div>
+                                <div className="step-divs">
+                                    <SandwichMenu />
+                                </div>
+                            </div> : null}
+
+                            <div className="row menu-toggle-row">
+                                <div className="col">
+                                    <h5 className="menu-open-buttons" onClick={() => props.openPastaMenu()}><u>Pasta</u></h5>
+                                </div>
+                                <div className="col">
+                                    {props.pastaMenuOpen ? <i onClick={() => props.closePastaMenu()} className="material-icons close-menu-icon">clear</i> : null}
+                                </div>
+                            </div>
+                            {props.pastaMenuOpen ? <div>
+                                <div className="step-divs">
+                                    <PastaMenu />
+                                </div>
+                            </div> : null}
+
+                            <div className="row menu-toggle-row">
+                                <div className="col">
+                                    <h5 className="menu-open-buttons" onClick={() => props.openDessertMenu()}><u>Dessert</u></h5>
+                                </div>
+                                <div className="col">
+                                    {props.dessertMenuOpen ? <i onClick={() => props.closeDessertMenu()} className="material-icons close-menu-icon">clear</i> : null}
+                                </div>
+                            </div>
+                            {props.dessertMenuOpen ? <div>
+                                <div className="step-divs">
+                                    <DessertMenu />
+                                </div>
+                            </div> : null}
+
+                            <div className="row menu-toggle-row">
+                                <div className="col">
+                                    <h5 className="menu-open-buttons" onClick={() => props.openSaladMenu()}><u>Salads</u></h5>
+                                </div>
+                                <div className="col">
+                                    {props.saladMenuOpen ? <i onClick={() => props.closeSaladMenu()} className="material-icons close-menu-icon">clear</i> : null}
+                                </div>
+                            </div>
+                            {props.saladMenuOpen ? <div>
+                                <div className="step-divs">
+                                    <SaladMenu />
+                                </div>
+                            </div> : null}
+
+                            <div className="items-array-div green lighten-5">
+                                    <p className="p-order-titles">Your order<i onClick={() => props.clearOrder()} className="material-icons carryout-icon clear-cart-icon">clear</i></p>
+                                    <p className="items-array-p"><b>{props.itemName}</b></p>
+                            </div>
+
                         </div>
                     </div> : null}
 
@@ -105,6 +219,23 @@ const mapDispatchToProps = (dispatch) => {
     return {
         findStore: (newCustomerInfo) => dispatch({type: 'ADDRESS_SAVED', customerInfo: newCustomerInfo}),
         clearOrder: () => dispatch({type: 'CLEAR_ORDER'}),
+        openDrinksMenu: () => dispatch({type: 'OPEN_DRINKS_MENU'}),
+        closeDrinksMenu: () => dispatch({type: 'CLOSE_DRINKS_MENU'}),
+        openPizzaMenu: () => dispatch({type: 'OPEN_PIZZA_MENU'}),
+        closePizzaMenu: () => dispatch({type: 'CLOSE_PIZZA_MENU'}),
+        openBreadMenu: () => dispatch({type: 'OPEN_BREAD_MENU'}),
+        openBreadMenu: () => dispatch({type: 'OPEN_BREAD_MENU'}),
+        openDessertMenu: () => dispatch({type: 'OPEN_DESSERT_MENU'}),
+        closeDessertMenu: () => dispatch({type: 'CLOSE_DESSERT_MENU'}),
+        openPastaMenu: () => dispatch({type: 'OPEN_PASTA_MENU'}),
+        closePastaMenu: () => dispatch({type: 'CLOSE_PASTA_MENU'}),
+        openSaladMenu: () => dispatch({type: 'OPEN_SALAD_MENU'}),
+        closeSaladMenu: () => dispatch({type: 'CLOSE_SALAD_MENU'}),
+        openSandwichMenu: () => dispatch({type: 'OPEN_SANDWICH_MENU'}),
+        closeSandwichMenu: () => dispatch({type: 'CLOSE_SANDWICH_MENU'}),
+        openWingsMenu: () => dispatch({type: 'OPEN_WINGS_MENU'}),
+        closeWingsMenu: () => dispatch({type: 'CLOSE_WINGS_MENU'}),
+
     }
 }
 
@@ -115,6 +246,14 @@ const mapStateToProps = (state) => {
         storeId: state.storeId,
         itemId: state.itemId,
         itemName: state.itemName,
+        drinksMenuOpen: state.drinksMenuOpen,
+        pizzaMenuOpen: state.pizzaMenuOpen,
+        breadMenuOpen: state.breadMenuOpen,
+        dessertMenuOpen: state.dessertMenuOpen,
+        pastaMenuOpen: state.pastaMenuOpen,
+        saladMenuOpen: state.saladMenuOpen,
+        sandwichMenuOpen: state.sandwichMenuOpen,
+        wingsMenuOpen: state.wingsMenuOpen
     }
 }
 
