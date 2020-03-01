@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
     if (action.type === 'ADDRESS_SAVED') {
         return {
             ...state,
-            customerAddress: action.customerAddress,
+            customerAddress: action.customerInfo,
             addressNotNull: true
         }
     }

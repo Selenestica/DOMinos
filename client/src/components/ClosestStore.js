@@ -8,8 +8,8 @@ function ClosestStore(props) {
     useEffect(() => {
 
         const strAddress = props.address.street
-        const cityAddress = props.address.city
-        const url = `https://cors-anywhere.herokuapp.com/https://order.dominos.com/power/store-locator?s=${strAddress}&c=${cityAddress}&type=`
+        const cityStateZipAddress = props.address.city + props.address.state + props.address.zip
+        const url = `https://cors-anywhere.herokuapp.com/https://order.dominos.com/power/store-locator?s=${strAddress}&c=${cityStateZipAddress}&type=`
 
         fetch(url)
         .then(response => response.json())

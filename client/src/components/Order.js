@@ -28,15 +28,6 @@ function Order(props) {
         .then(window.location.href = "/order-success")
     }
 
-    const [customerAddress, setCustomerAddress] = useState({})
-
-    const handleAddressChange = (e) => {
-        setCustomerAddress({
-            ...customerAddress,
-            [e.target.name]: e.target.value
-        })
-    }
-
     return(<>
 
         <div className="container">
@@ -52,9 +43,11 @@ function Order(props) {
                     <h4>Step 1: Find the Domino's nearest to you</h4>
                     <div className="step-divs">
                         <p className="p-titles">Where are you?</p>
-                        <input type="text" onChange={handleAddressChange} name="street" placeholder="street" />
-                        <input type="text" onChange={handleAddressChange} name="city" placeholder="city, state, zip code" />
-                        <button className="open-menu-button purple" onClick={() => props.findStore(customerAddress)}><i className="material-icons carryout-icon small">search</i></button>
+                        <input type="text" onChange={handleChange} name="street" placeholder="street" />
+                        <input type="text" onChange={handleChange} name="city" placeholder="city" />
+                        <input type="text" onChange={handleChange} name="state" placeholder="state" />
+                        <input type="text" onChange={handleChange} name="zip" placeholder="zip code" />
+                        <button className="open-menu-button purple" onClick={() => props.findStore(customerInfo)}><i className="material-icons carryout-icon small">search</i></button>
                     </div>
                     {props.addressNotNull ? <div className="step-divs">
                         <p className="p-titles">Your Domino's</p>
@@ -81,13 +74,6 @@ function Order(props) {
 
                     {props.storeIdNotNull ? <div>
                         <h4>Step 3: Enter your info, and place the order!</h4>
-                        <div className="step-divs">
-                            <p className="p-titles">Your address</p>
-                            <input type="text" onChange={handleChange} name="street" placeholder="street" />
-                            <input type="text" onChange={handleChange} name="city" placeholder="city" />
-                            <input type="text" onChange={handleChange} name="state" placeholder="state" />
-                            <input type="text" onChange={handleChange} name="zip" placeholder="zip code" />
-                        </div>
                         <div className="step-divs">
                             <p className="p-titles">Contact Info</p>
                             <input type="text" onChange={handleChange} name="firstName" placeholder="first name" />
@@ -117,7 +103,7 @@ function Order(props) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        findStore: (newCustomerAddress) => dispatch({type: 'ADDRESS_SAVED', customerAddress: newCustomerAddress}),
+        findStore: (newCustomerInfo) => dispatch({type: 'ADDRESS_SAVED', customerInfo: newCustomerInfo}),
         clearOrder: () => dispatch({type: 'CLEAR_ORDER'}),
     }
 }
