@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 
 function UserProfile() {
 
-    //const userEmail = props.userEmail
     const [userInfo, setUserInfo] = useState([])
 
     useEffect(() => {
