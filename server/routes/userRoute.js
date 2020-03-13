@@ -116,10 +116,10 @@ router.post('/unregister-user/:userId', (req, res) => {
 })
 
 //update registered user's info
-router.put('/view-registered-users/update/:userId', (req, res) => {
-    const userId = req.params.userId    
+router.put('/view-registered-users/update/:userEmail', (req, res) => {
+    const userEmail = req.params.userEmail    
 
-    User.findByIdAndUpdate(userId, {
+    User.findByIdAndUpdate(userEmail, {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         address: {
