@@ -5,7 +5,7 @@ function PastaMenu(props) {
 
     const [menuData, setMenuData] = useState([])
 
-    useEffect(() => {
+    useEffect((props) => {
 
         const storeId = props.storeId
 
