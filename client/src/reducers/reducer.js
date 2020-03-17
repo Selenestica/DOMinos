@@ -1,5 +1,3 @@
-import { stat } from "fs"
-
 const initialState = {
     customerAddress: '',
     addressNotNull: false,  
@@ -7,9 +5,6 @@ const initialState = {
     storeIdNotNull: false,
     itemId: [],
     itemName: [],
-    isAuthenticated: false,
-    token: '',
-    userEmail: '',
     drinksMenuOpen: false,
     pizzaMenuOpen: false,
     breadMenuOpen: false,
@@ -51,22 +46,6 @@ const reducer = (state = initialState, action) => {
             ...state,
             itemId: [],
             itemName: []
-        }
-    }
-
-    else if (action.type === 'ON_LOGIN_SUCCESS') {
-        return {
-            ...state,
-            isAuthenticated: true,
-            token: action.token
-        }
-    }
-
-    else if (action.type === 'SIGN_OUT') {
-        return {
-            ...state,
-            isAuthenticated: false,
-            token: ''
         }
     }
 

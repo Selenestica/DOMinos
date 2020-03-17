@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import ClosestStore from './ClosestStore'
 import AllMenus from './menus/AllMenus'
-import axios from 'axios'
 
 function Order(props) {
 
@@ -18,7 +17,6 @@ function Order(props) {
     }
 
     const onHandleSubmitCustomerInfo = () => {
-        const userEmail = localStorage.getItem('userEmail')
         fetch('http://localhost:1200/order/add-order', {
             method: 'POST',
             headers: {
@@ -26,11 +24,6 @@ function Order(props) {
             },
             body: JSON.stringify(customerInfo)
         }).then(response => response.json())
-        .then(
-            axios.post(`http://localhost:1200/user/view-registered-users/update/${userEmail}`, {
-                customerInfo
-            })
-        )
         .then(window.location.href = "/order-success")
     }
 

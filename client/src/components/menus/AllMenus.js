@@ -105,7 +105,6 @@ const mapDispatchToProps = (dispatch) => {
       openDrinksMenu: () => dispatch({type: 'OPEN_DRINKS_MENU'}),
       openPizzaMenu: () => dispatch({type: 'OPEN_PIZZA_MENU'}),
       openBreadMenu: () => dispatch({type: 'OPEN_BREAD_MENU'}),
-      openBreadMenu: () => dispatch({type: 'OPEN_BREAD_MENU'}),
       openDessertMenu: () => dispatch({type: 'OPEN_DESSERT_MENU'}),
       openPastaMenu: () => dispatch({type: 'OPEN_PASTA_MENU'}),
       openSaladMenu: () => dispatch({type: 'OPEN_SALAD_MENU'}),
